@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="WDD 231 Course Home Page" />
+  <title>WDD 231 | Course Home Page</title>
+
+  <link rel="stylesheet" href="styles/base.css" />
+  <script defer src="scripts/main.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img class="brand-photo" src="images/profile.webp" alt="Profile photo" width="56" height="56" />
+        <p class="brand-name">Jose Vega</p>
+      </div>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="primaryNav"
+        aria-expanded="false"
+      >
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="primaryNav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="chamber/index.html">Chamber</a>
+        <a class="nav-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="nav-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <h1 class="page-title">Home</h1>
+
+    <section class="cards">
+      <article class="card card-wide">
+        <h2 class="card-title">Course Work</h2>
+        <ul class="list">
+          <li><a href="#">Week 01: Course Home Page</a></li>
+          <li><a href="#">Week 02: Layout &amp; Design</a></li>
+          <li><a href="#">Week 03: Responsive Design</a></li>
+          <li><a href="#">Week 04: JavaScript Basics</a></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title">Information</h2>
+        <ul class="meta">
+          <li><span class="label">City:</span> <span>San Juan</span></li>
+          <li><span class="label">Country:</span> <span>Puerto Rico</span></li>
+          <li><span class="label">Temperature:</span> <span id="temp">--</span></li>
+          <li><span class="label">Conditions:</span> <span id="cond">--</span></li>
+        </ul>
+      </article>
+
+      <article class="card card-wide">
+        <h2 class="card-title">Weather</h2>
+        <div class="weather">
+          <img
+            class="weather-img"
+            src="images/weather-placeholder.webp"
+            alt="Weather placeholder"
+            width="900"
+            height="300"
+            loading="lazy"
+          />
+          <p class="weather-note">
+            (Optional) Replace this with real weather later using an API.
+          </p>
+        </div>
+      </article>
+
+      <article class="card card-wide">
+        <h2 class="card-title">Visits</h2>
+        <div class="table-wrap" role="region" aria-label="Visits table" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Metric</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Today</td>
+                <td id="visitsToday">0</td>
+              </tr>
+              <tr>
+                <td>Last Visit</td>
+                <td id="lastVisit">--</td>
+              </tr>
+              <tr>
+                <td>Message</td>
+                <td id="visitMessage">--</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; <span id="year"></span> Jose Vega | Tarija - Bo
+    </p>
+    <p>
+      Last Modified: <span id="lastModified"></span>
+    </p>
+  </footer>
+</body>
+</html>

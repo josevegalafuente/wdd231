@@ -1,0 +1,270 @@
+/* ---------- Base Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --max: 980px;
+  --gap: 1rem;
+  --border: #d9d9d9;
+  --bg: #ffffff;
+  --muted: #f3f3f3;
+  --text: #111;
+  --header: #2b2b2b;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: .75rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 10;
+}
+.skip-link:focus {
+  left: .75rem;
+  top: .75rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--header);
+  color: #fff;
+}
+
+.header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex: 1;
+}
+
+.brand-photo {
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.brand-name {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* Nav */
+.site-nav {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: .5rem .75rem;
+  border-radius: .25rem;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  background: rgba(255,255,255,.12);
+  outline: none;
+}
+
+/* Mobile menu button */
+.menu-button {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: .5rem;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.menu-icon {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  margin: 0 auto;
+  position: relative;
+}
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+}
+.menu-icon::before { top: -6px; }
+.menu-icon::after  { top:  6px; }
+
+/* ---------- Main ---------- */
+.page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.page-title {
+  margin: .5rem 0 1rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: .5rem;
+}
+
+.cards {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.card-title {
+  margin: 0;
+  padding: .75rem 1rem;
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.05rem;
+}
+
+.card > *:not(.card-title) {
+  padding: 1rem;
+  margin: 0;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.meta li {
+  padding: .4rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+.meta li:last-child {
+  border-bottom: none;
+}
+.label {
+  font-weight: 600;
+}
+
+.weather-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border);
+}
+
+.weather-note {
+  margin-top: .75rem;
+  font-size: .95rem;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--border);
+  padding: .6rem .75rem;
+  text-align: left;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--header);
+  color: #fff;
+  text-align: center;
+}
+.site-footer p {
+  margin: .25rem 0;
+}
+
+/* ---------- Desktop Layout ---------- */
+@media (min-width: 760px) {
+  .cards {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .card-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Mobile Nav ---------- */
+@media (max-width: 759px) {
+  .menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-top: .75rem;
+    padding-top: .5rem;
+    border-top: 1px solid rgba(255,255,255,.25);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: .75rem;
+    border-radius: 0;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+  }
+}
