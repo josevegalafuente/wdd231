@@ -8,11 +8,59 @@ menuButton.addEventListener("click", () => {
   menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
 });
 
+// ----- Web Certificate Courses -----
+
+const courses = [
+  { code: "CSE 110", name: "Introduction to Web and Computer Programming", credits: 2, category: "CSE" },
+  { code: "WDD 130", name: "Web Fundamentals", credits: 2, category: "WDD", highlight: true },
+  { code: "CSE 111", name: "Programming with Functions", credits: 2, category: "CSE" },
+  { code: "WDD 131", name: "Developing Web Applications", credits: 3, category: "WDD", highlight: true },
+  { code: "WDD 231", name: "Visual Design and the Web", credits: 3, category: "WDD" },
+  { code: "CSE 210", name: "Programming with Classes", credits: 3, category: "CSE" },
+  { code: "WDD 331", name: "Frontend Development", credits: 3, category: "WDD" }
+];
+
+const grid = document.querySelector("#coursesGrid");
+const totalEl = document.querySelector("#creditsTotal");
+const buttons = document.querySelectorAll(".filter-btn");
+
+function renderCourses(filter) {
+  const normalized = filter.toUpperCase();
+  const filtered = normalized === "ALL"
+    ? courses
+    : courses.filter(c => c.category === normalized);
+
+  grid.innerHTML = filtered.map(courseToCardHTML).join("");
+
+  const total = filtered.reduce((sum, c) => sum + c.credits, 0);
+  totalEl.textContent = String(total);
+}
+
+function courseToCardHTML(c) {
+  const highlightClass = c.highlight ? "highlight" : "";
+  return `
+    <div class="course-card ${highlightClass}">
+      <p class="course-code">${c.code}</p>
+      <p class="course-line"><strong>Name:</strong> ${c.name}</p>
+      <p class="course-line"><strong>Credits:</strong> ${c.credits}</p>
+    </div>
+  `;
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+
+    renderCourses(btn.dataset.filter);
+  });
+});
+
 // ----- Footer Dates -----
 document.querySelector("#year").textContent = new Date().getFullYear();
 document.querySelector("#lastModified").textContent = document.lastModified;
 
-// ----- Visits (simple localStorage) -----
+// ----- Visits -----
 const visitsTodayEl = document.querySelector("#visitsToday");
 const lastVisitEl = document.querySelector("#lastVisit");
 const messageEl = document.querySelector("#visitMessage");
@@ -54,6 +102,5 @@ if (!lastVisitDate) {
   }
 }
 
-// ----- (Optional placeholder values for Information) -----
-document.querySelector("#temp").textContent = "—";
-document.querySelector("#cond").textContent = "—";
+// Initial render
+renderCourses("ALL");
