@@ -20,7 +20,7 @@ html, body {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
@@ -206,6 +206,10 @@ body {
   text-align: left;
 }
 
+.page > section {
+  margin-top: 1.5rem;
+}
+
 footer .social-links {
   display: flex;
   justify-content: center;
@@ -230,7 +234,6 @@ footer .social-link img {
   height: 32px;
 }
 
-/* Optional: subtle hover/focus feedback */
 footer .social-link:hover,
 footer .social-link:focus-visible {
   outline: 2px solid rgba(0, 0, 0, 0.35);
@@ -248,7 +251,7 @@ footer .social-link:focus-visible {
   margin: .25rem 0;
 }
 
-/* ---------- Desktop Layout ---------- */
+/* Desktop Layout */
 @media (min-width: 760px) {
   .cards {
     grid-template-columns: 2fr 1fr;
@@ -260,7 +263,7 @@ footer .social-link:focus-visible {
   }
 }
 
-/* ---------- Mobile Nav ---------- */
+/* Mobile Nav */
 @media (max-width: 759px) {
   .menu-button {
     display: inline-flex;
@@ -292,10 +295,6 @@ footer .social-link:focus-visible {
     flex-wrap: wrap;
   }
 }
-
-
-
-/* ===== MAIN CONTENT ONLY ===== */
 
 .page {
   max-width: 1050px;

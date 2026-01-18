@@ -1,0 +1,127 @@
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+}
+
+.home-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+}
+
+@media (min-width: 900px) {
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: #3b3b3b;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card-body {
+  padding: 1rem;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.profile-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.courses .card-body {
+  padding: 1.2rem 1rem 1.5rem;
+}
+
+.course-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  border: 1px solid #bbb;
+  background: #fff;
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filter-btn.is-active {
+  background: #3b3b3b;
+  color: #fff;
+  border-color: #3b3b3b;
+}
+
+.courses-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  padding: 1rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  background: #fff;
+}
+
+@media (min-width: 900px) {
+  .courses-grid {
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+  }
+}
+
+.course-card {
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  padding: 0.85rem 0.6rem;
+  text-align: center;
+  background: #fff;
+}
+
+.course-card.highlight {
+  background: #5fadda;
+  border-color: #2c729b;
+}
+
+.course-code {
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+}
+
+.course-line {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.credits-total {
+  text-align: center;
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+}
+
+.page > section {
+  margin-top: 1.5rem;
+}
