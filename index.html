@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="WDD 231 Course Home Page" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WDD 231 Course Home Page">
   <title>WDD 231 | Course Home Page</title>
 
-  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/base.css">
   <script defer src="scripts/main.js"></script>
 </head>
 
@@ -16,7 +16,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <img class="brand-photo" src="images/company.png" alt="Company logo" width="56" height="56" />
+        <img class="brand-photo" src="images/company.png" alt="Company logo" width="56" height="56">
         <p class="brand-name">Jose Vega</p>
       </div>
 
@@ -34,89 +34,90 @@
       <nav class="site-nav" id="primaryNav">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="chamber/index.html">Chamber</a>
-        <a class="nav-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="nav-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="nav-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="nav-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </nav>
     </div>
   </header>
 
   <main class="page" id="main">
-  <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Home</h1>
 
-  <section class="home-grid" aria-label="Home content">
-    <article class="card">
-      <h2 class="card-title">My Self</h2>
+    <section class="home-grid" aria-label="Home content">
+      <article class="card">
+        <h2 class="card-title">My Self</h2>
+        <div class="card-body">
+          <p>
+            My name is José Vega. I was born in a city in the south of Bolivia called Tarija, and I am currently focused on growing within the technology field. I work in a technology company related to artificial intelligence, while also dedicating time and effort to building my own company called Chief, which is centered on web development and AI-driven solutions.
+            One of the things I value most about technology and artificial intelligence is the ability to understand where we might be headed in the future. Technology offers incredible possibilities, and it truly excites me to explore how innovation can shape our lives and open new perspectives. This constant evolution motivates me to keep learning and improving my skills.
+          </p>
+
+          <p>
+            I have a strong interest in graphic design, especially in combining colors and shapes to create visual harmony. I enjoy imagining new ways to connect ideas and aesthetics, giving projects a fresh and meaningful perspective. I believe design has the power to communicate ideas in a unique and impactful way.
+            In my free time, I enjoy running and training in boxing, as staying active helps me maintain both physical and mental balance. My family is extremely important to me, and they are a central part of my life. I am a member of The Church of Jesus Christ of Latter-day Saints, and I strive to serve the members of my local ward whenever I can.
+          </p>
+
+          <p>
+            I believe in Jesus Christ as our Savior, and I know that through Him we can find peace, happiness, and strength in this life, especially within our families. I am excited to integrate faith, learning, and technology in this journey, using the skills I gain to help others, strengthen my family, and continue progressing personally and professionally.
+          </p>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title">Jose Vega</h2>
+        <div class="card-body">
+          <img
+            class="profile-photo"
+            src="images/profile.png"
+            alt="Photo of Jose Vega"
+            width="560"
+            height="420"
+            loading="lazy"
+          >
+        </div>
+      </article>
+    </section>
+
+    <section class="card courses" aria-label="Web certificate courses">
+      <h2 class="card-title">Web Certificate Courses</h2>
+
       <div class="card-body">
-        <p>
-          My name is José Vega. I was born in a city in the south of Bolivia called Tarija, and I am currently focused on growing within the technology field. I work in a technology company related to artificial intelligence, while also dedicating time and effort to building my own company called Chief, which is centered on web development and AI-driven solutions.
+        <div class="course-filters" role="group" aria-label="Course filters">
+          <button class="filter-btn is-active" type="button" data-filter="ALL">All</button>
+          <button class="filter-btn" type="button" data-filter="CSE">CSE</button>
+          <button class="filter-btn" type="button" data-filter="WDD">WDD</button>
+        </div>
 
-One of the things I value most about technology and artificial intelligence is the ability to understand where we might be headed in the future. Technology offers incredible possibilities, and it truly excites me to explore how innovation can shape our lives and open new perspectives. This constant evolution motivates me to keep learning and improving my skills.
+        <div class="courses-grid" id="coursesGrid" aria-live="polite"></div>
+
+        <p class="credits-total">
+          The total credits for courses listed above is
+          <strong><span id="creditsTotal">0</span></strong>
         </p>
-        <p>I have a strong interest in graphic design, especially in combining colors and shapes to create visual harmony. I enjoy imagining new ways to connect ideas and aesthetics, giving projects a fresh and meaningful perspective. I believe design has the power to communicate ideas in a unique and impactful way.
-
-In my free time, I enjoy running and training in boxing, as staying active helps me maintain both physical and mental balance. My family is extremely important to me, and they are a central part of my life. I am a member of The Church of Jesus Christ of Latter-day Saints, and I strive to serve the members of my local ward whenever I can.</p>
-        <p>I believe in Jesus Christ as our Savior, and I know that through Him we can find peace, happiness, and strength in this life, especially within our families. I am excited to integrate faith, learning, and technology in this journey, using the skills I gain to help others, strengthen my family, and continue progressing personally and professionally.</p>
       </div>
-    </article>
-
-    <article class="card">
-      <h2 class="card-title">Jose Vega</h2>
-      <div class="card-body">
-        <img
-          class="profile-photo"
-          src="images/profile.png"
-          alt="Photo of Jose Vega"
-          width="560"
-          height="420"
-          loading="lazy"
-        />
-      </div>
-    </article>
-  </section>
-  <section class="card courses" aria-label="Web certificate courses">
-    <h2 class="card-title">Web Certificate Courses</h2>
-
-    <div class="card-body">
-      <div class="course-filters" role="group" aria-label="Course filters">
-        <button class="filter-btn is-active" type="button" data-filter="ALL">All</button>
-        <button class="filter-btn" type="button" data-filter="CSE">CSE</button>
-        <button class="filter-btn" type="button" data-filter="WDD">WDD</button>
-      </div>
-
-      <div class="courses-grid" id="coursesGrid" aria-live="polite"></div>
-
-      <p class="credits-total">
-        The total credits for courses listed above is
-        <strong><span id="creditsTotal">0</span></strong>
-      </p>
-    </div>
-  </section>
-</main>
-
+    </section>
+  </main>
 
   <footer class="site-footer">
-<div class="social-links" aria-label="Social media links">
-  <a class="social-link" href="https://www.linkedin.com/in/YOUR-USERNAME/" target="_blank" rel="noreferrer"
-     aria-label="LinkedIn (opens in new tab)">
-    <img src="images/linkedin.png" alt="" width="32" height="32" loading="lazy" />
-  </a>
+    <nav class="social-links" aria-label="Social media links">
+      <a class="social-link" href="https://www.linkedin.com/in/YOUR-USERNAME/" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn (opens in new tab)">
+        <img src="images/linkedin.png" alt="" width="32" height="32" loading="lazy">
+      </a>
 
-  <a class="social-link" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer"
-     aria-label="GitHub (opens in new tab)">
-    <img src="images/github.png" alt="" width="32" height="32" loading="lazy" />
-  </a>
+      <a class="social-link" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer"
+        aria-label="GitHub (opens in new tab)">
+        <img src="images/github.png" alt="" width="32" height="32" loading="lazy">
+      </a>
 
-  <a class="social-link" href="https://www.instagram.com/YOUR-USERNAME/" target="_blank" rel="noreferrer"
-     aria-label="Instagram (opens in new tab)">
-    <img src="images/instagram.png" alt="" width="32" height="32" loading="lazy" />
-  </a>
-</div>
-    <p>
-      &copy; <span id="year"></span> Jose Vega | Tarija - Bo
-    </p>
-    <p>
-      Last Modified: <span id="lastModified"></span>
-    </p>
+      <a class="social-link" href="https://www.instagram.com/YOUR-USERNAME/" target="_blank" rel="noopener noreferrer"
+        aria-label="Instagram (opens in new tab)">
+        <img src="images/instagram.png" alt="" width="32" height="32" loading="lazy">
+      </a>
+    </nav>
+
+    <p>&copy; <span id="year"></span> Jose Vega | Tarija - Bo</p>
+    <p>Last Modified: <span id="lastModified"></span></p>
   </footer>
 </body>
 </html>

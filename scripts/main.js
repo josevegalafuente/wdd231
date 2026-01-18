@@ -11,9 +11,9 @@ menuButton.addEventListener("click", () => {
 // ----- Web Certificate Courses -----
 
 const courses = [
-  { code: "CSE 110", name: "Introduction to Web and Computer Programming", credits: 2, category: "CSE" },
+  { code: "CSE 110", name: "Introduction to Web and Computer Programming", credits: 2, category: "CSE", highlight: true  },
   { code: "WDD 130", name: "Web Fundamentals", credits: 2, category: "WDD", highlight: true },
-  { code: "CSE 111", name: "Programming with Functions", credits: 2, category: "CSE" },
+  { code: "CSE 111", name: "Programming with Functions", credits: 2, category: "CSE", highlight: true  },
   { code: "WDD 131", name: "Developing Web Applications", credits: 3, category: "WDD", highlight: true },
   { code: "WDD 231", name: "Visual Design and the Web", credits: 3, category: "WDD" },
   { code: "CSE 210", name: "Programming with Classes", credits: 3, category: "CSE" },
