@@ -1,10 +1,10 @@
-.page {
+main.page {
   max-width: 1050px;
   margin: 0 auto;
   padding: 2rem 1rem 3rem;
 }
 
-.page-title {
+.page > .page-title {
   font-size: 2rem;
   margin: 0 0 1.5rem;
 }
@@ -26,13 +26,13 @@
   }
 }
 
-.card {
+.page section.card {
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
-.card-title {
+.page section.card > .card-title {
   padding: 0.9rem 1rem;
   font-size: 1rem;
   font-weight: 700;
@@ -40,7 +40,7 @@
   background: #3b3b3b;
 }
 
-.card-body {
+.page section.card .card-body {
   padding: 1rem;
   font-size: 0.95rem;
   color: #222222;

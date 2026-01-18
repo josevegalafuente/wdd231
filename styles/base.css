@@ -28,6 +28,7 @@ body {
   background: var(--bg);
 }
 
+
 .skip-link {
   position: absolute;
   top: 0;
@@ -43,6 +44,7 @@ body {
   left: 0.75rem;
 }
 
+
 .page {
   max-width: var(--max);
   margin: 0 auto;
@@ -54,6 +56,8 @@ body {
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border);
 }
+
+/* Header + NAV */
 
 .site-header {
   color: #ffffff;
@@ -106,6 +110,7 @@ body {
   outline: none;
 }
 
+/* Mobile menu button */
 .menu-button {
   display: none;
   width: 44px;
@@ -143,9 +148,11 @@ body {
   top: 6px;
 }
 
+/* CARDS (BASE) */
+
 .card {
-  border: 1px solid var(--border);
   background: #ffffff;
+  border: 1px solid var(--border);
 }
 
 .card-title {
@@ -155,6 +162,8 @@ body {
   background: var(--muted);
   border-bottom: 1px solid var(--border);
 }
+
+/* FOOTER */
 
 .site-footer {
   margin-top: 2rem;
@@ -197,6 +206,8 @@ body {
   outline: 2px solid rgba(255, 255, 255, 0.45);
   outline-offset: 3px;
 }
+
+/* RESPONSIVE NAV */
 
 @media (max-width: 759px) {
   .menu-button {
