@@ -9,6 +9,10 @@
   margin: 0 0 1.5rem;
 }
 
+.page > section {
+  margin-top: 1.5rem;
+}
+
 .home-grid {
   display: grid;
   gap: 1.5rem;
@@ -23,25 +27,23 @@
 }
 
 .card {
-  background: #fff;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .card-title {
-  margin: 0;
   padding: 0.9rem 1rem;
-  background: #3b3b3b;
-  color: #fff;
   font-size: 1rem;
   font-weight: 700;
+  color: #ffffff;
+  background: #3b3b3b;
 }
 
 .card-body {
   padding: 1rem;
-  color: #222;
   font-size: 0.95rem;
+  color: #222222;
 }
 
 .profile-photo {
@@ -63,28 +65,28 @@
 }
 
 .filter-btn {
-  border: 1px solid #bbb;
-  background: #fff;
   padding: 0.35rem 0.9rem;
-  border-radius: 4px;
-  cursor: pointer;
   font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #bbbbbb;
+  background: #ffffff;
 }
 
 .filter-btn.is-active {
+  color: #ffffff;
   background: #3b3b3b;
-  color: #fff;
   border-color: #3b3b3b;
 }
 
 .courses-grid {
   display: grid;
   gap: 0.9rem;
-  grid-template-columns: repeat(2, minmax(150px, 1fr));
   padding: 1rem;
+  background: #ffffff;
   border: 1px solid #e3e3e3;
   border-radius: 6px;
-  background: #fff;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
 }
 
 @media (min-width: 900px) {
@@ -94,11 +96,11 @@
 }
 
 .course-card {
-  border: 1px solid #cfcfcf;
-  border-radius: 4px;
   padding: 0.85rem 0.6rem;
   text-align: center;
-  background: #fff;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
 }
 
 .course-card.highlight {
@@ -107,8 +109,8 @@
 }
 
 .course-code {
-  font-weight: 800;
   margin: 0 0 0.6rem;
+  font-weight: 800;
 }
 
 .course-line {
@@ -117,11 +119,7 @@
 }
 
 .credits-total {
-  text-align: center;
   margin: 1rem 0 0;
+  text-align: center;
   font-size: 0.9rem;
-}
-
-.page > section {
-  margin-top: 1.5rem;
 }
