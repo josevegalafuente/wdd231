@@ -1,7 +1,7 @@
-// ===== Helpers =====
+// Helpers
 const qs = (sel) => document.querySelector(sel);
 
-// ===== Mobile menu =====
+// Mobile menu
 const menuToggle = qs("#menuToggle");
 
 function setMenu(open) {
@@ -19,7 +19,7 @@ window.addEventListener("resize", () => {
   if (window.innerWidth >= 850) setMenu(false);
 });
 
-// ===== Theme toggle =====
+// Theme toggle
 const themeToggle = qs("#themeToggle");
 
 function applyTheme(theme) {
@@ -40,11 +40,11 @@ themeToggle.addEventListener("click", () => {
   if (saved === "dark" || saved === "light") applyTheme(saved);
 })();
 
-// ===== Footer info =====
+// Footer info 
 qs("#year").textContent = new Date().getFullYear();
 qs("#lastModified").textContent = document.lastModified;
 
-// ===== Directory: Fetch + Render =====
+// Directory: Fetch + Render
 const membersEl = qs("#members");
 const gridBtn = qs("#gridBtn");
 const listBtn = qs("#listBtn");
@@ -63,7 +63,7 @@ function setView(view) {
 function normalizeLevel(level) {
   const v = String(level || "").toLowerCase();
   if (v === "gold" || v === "silver") return v;
-  return "member"; // default (covers "bronze" or anything else)
+  return "member"; 
 }
 
 function createMemberCard(member) {
@@ -124,7 +124,7 @@ async function loadMembers() {
   }
 }
 
-// ===== View toggle events =====
+// View toggle events
 gridBtn.addEventListener("click", () => setView("grid"));
 listBtn.addEventListener("click", () => setView("list"));
 
