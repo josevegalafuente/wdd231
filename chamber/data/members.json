@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Pass Clothing",
+    "address": "123 Mendez, Tarija, Bolivia",
+    "phone": "+591 75131474",
+    "website": "https://www.passstreetwear.com/",
+    "image": "pass.png",
+    "membership": "gold"
+  },
+  {
+    "name": "Dunno Clothing",
+    "address": "456 Bolivar, Tarija, Bolivia",
+    "phone": "+591 65826654",
+    "website": "https://linktr.ee/dunnoclothing?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnCMqOkfz29S95i_ewaGBDwqYPecdyjHfQfEbhFmpbxjx2O1Yqg0Nh8701jBM_aem_pVc6KHhTWseEPHjrpLiF8Q",
+    "image": "dunno.png",
+    "membership": "silver"
+  },
+  {
+    "name": "Toma Mate Tarija",
+    "address": "Sucre 1202, Tarija, Bolivia",
+    "phone": "+591 76198040",
+    "website": "https://www.instagram.com/toma_mate_tarija/",
+    "image": "mate.jpg",
+    "membership": "member"
+  },
+  {
+    "name": "Diabla Bolivia",
+    "address": "321 Colon, Tarija, Bolivia",
+    "phone": "+591 700 44444",
+    "website": "https://diabla.com.bo",
+    "image": "diabla.png",
+    "membership": "gold"
+  },
+  {
+    "name": "Kuña Murata",
+    "address": "654 Carlos Diaz Sossa, Tarija, Bolivia",
+    "phone": "+591 68688153",
+    "website": "https://www.facebook.com/kunamurata?locale=es_LA",
+    "image": "kuna.png",
+    "membership": "silver"
+  },
+  {
+    "name": "Fitness 360",
+    "address": "987 Integracion Avenue, Tarija, Bolivia",
+    "phone": "+591 72996168",
+    "website": "https://www.instagram.com/fitness360tj/",
+    "image": "fitness.png",
+    "membership": "member"
+  },
+  {
+    "name": "KC Arte Floral",
+    "address": "15 de Abril, Tarija, Bolivia",
+    "phone": "+591 78243626",
+    "website": "https://www.instagram.com/kc.artefloral/",
+    "image": "floral.png",
+    "membership": "gold"
+  }
+]

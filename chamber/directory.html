@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarija Chamber of Commerce | Directory</title>
+
   <meta name="description" content="Explore the Tarija Chamber of Commerce business directory and discover local companies, services, and membership details.">
   <meta name="author" content="Jose Vega">
+
   <meta property="og:title" content="Tarija Chamber of Commerce Business Directory">
   <meta property="og:description" content="Discover trusted local businesses, services, and members of the Tarija Chamber of Commerce in our official business directory.">
   <meta property="og:image" content="https://josevegalafuente.github.io/wdd231/chamber/images/og-directory.png">
@@ -26,11 +28,7 @@
   <header class="site-header">
     <div class="header-inner container">
       <div class="brand">
-  <img
-    class="brand-logo-img"
-    src="images/logo.png"
-    alt="Tarija Chamber of Commerce logo"
-  />
+        <img class="brand-logo-img" src="images/logo.png" alt="Tarija Chamber of Commerce logo" />
         <div class="brand-text">
           <p class="brand-title">Tarija Chamber</p>
           <p class="brand-subtitle">of Commerce</p>
@@ -50,105 +48,27 @@
       </div>
 
       <nav class="primary-nav" id="primaryNav">
-        <a href="#" aria-current="page">Home</a>
-        <a href="directory.html">Directory</a>
-        <a href="#">Join</a>
-        <a href="#">Discover</a>
+        <a href="index.html">Home</a>
+        <a href="directory.html" aria-current="page">Directory</a>
+        <a href="join.html">Join</a>
+        <a href="discover.html">Discover</a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="container page">
-    <section class="hero" aria-label="Hero section">
-      <img class="hero-img" src="images/central-market.jpg" alt="Tarija city view" />
-      <a class="hero-cta" href="#" role="button">Keynote Tickets</a>
-    </section>
+    <h1 class="page-title">Directory</h1>
 
-    <h1 class="page-title">Home</h1>
-
-    <section class="info-grid" aria-label="Home information panels">
-      <article class="panel panel-events">
-        <header class="panel-head">Events</header>
-        <div class="panel-body">
-          <ul class="events-list">
-            <li>
-              <p class="event-title">Business Networking Night</p>
-              <p class="event-meta">Friday • 7:00 PM • Main Hall</p>
-            </li>
-            <li>
-              <p class="event-title">Local Market Showcase</p>
-              <p class="event-meta">Saturday • 10:00 AM • Central Plaza</p>
-            </li>
-            <li>
-              <p class="event-title">Chamber Workshop: Digital Basics</p>
-              <p class="event-meta">Tuesday • 6:30 PM • Room B</p>
-            </li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="panel panel-current">
-        <header class="panel-head">Current Weather</header>
-        <div class="panel-body weather-body">
-          <div class="weather-icon" aria-hidden="true">⛅</div>
-          <div class="weather-details">
-            <p class="weather-temp"><span id="currentTemp">75</span>°F</p>
-            <p class="weather-desc" id="weatherDesc">Partly Cloudy</p>
-
-            <p class="weather-line"><strong>High:</strong> <span id="highTemp">85</span>°</p>
-            <p class="weather-line"><strong>Low:</strong> <span id="lowTemp">52</span>°</p>
-            <p class="weather-line"><strong>Humidity:</strong> <span id="humidity">34</span>%</p>
-            <p class="weather-line"><strong>Sunrise:</strong> <span id="sunrise">7:30am</span></p>
-            <p class="weather-line"><strong>Sunset:</strong> <span id="sunset">9:59pm</span></p>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel panel-forecast">
-        <header class="panel-head">Weather Forecast</header>
-        <div class="panel-body">
-          <p class="forecast-line">Today: <strong><span id="todayTemp">90</span>°F</strong></p>
-          <p class="forecast-line">Wednesday: <strong><span id="wedTemp">89</span>°F</strong></p>
-          <p class="forecast-line">Thursday: <strong><span id="thuTemp">68</span>°F</strong></p>
-        </div>
-      </article>
-    </section>
-
-    <section class="business-section" aria-label="Featured businesses">
-      <div class="business-cards">
-        <article class="biz-card">
-          <img class="biz-thumb" src="images/pass.png" alt="Business Name storefront" />
-          <div class="biz-text">
-            <h2 class="biz-name">Business Name</h2>
-            <p class="biz-tag">Business Tag Line</p>
-            <p class="biz-meta"><strong>EMAIL:</strong> info@gmail.com</p>
-            <p class="biz-meta"><strong>PHONE:</strong> 800-555-1234</p>
-            <p class="biz-meta"><strong>URL:</strong> mybusiness.com</p>
-          </div>
-        </article>
-
-        <article class="biz-card">
-          <img class="biz-thumb" src="images/dunno.png" alt="Business Name storefront" />
-          <div class="biz-text">
-            <h2 class="biz-name">Business Name</h2>
-            <p class="biz-tag">Business Tag Line</p>
-            <p class="biz-meta"><strong>EMAIL:</strong> info@gmail.com</p>
-            <p class="biz-meta"><strong>PHONE:</strong> 800-555-1234</p>
-            <p class="biz-meta"><strong>URL:</strong> mybusiness.com</p>
-          </div>
-        </article>
-
-        <article class="biz-card">
-          <img class="biz-thumb" src="images/mate.jpg" alt="Business Name storefront" />
-          <div class="biz-text">
-            <h2 class="biz-name">Business Name</h2>
-            <p class="biz-tag">Business Tag Line</p>
-            <p class="biz-meta"><strong>EMAIL:</strong> info@gmail.com</p>
-            <p class="biz-meta"><strong>PHONE:</strong> 800-555-1234</p>
-            <p class="biz-meta"><strong>URL:</strong> mybusiness.com</p>
-          </div>
-        </article>
+    <section class="directory-controls" aria-label="Directory view controls">
+      <p class="directory-help">Choose a view:</p>
+      <div class="view-buttons" role="group" aria-label="Toggle directory view">
+        <button id="gridBtn" class="view-btn" type="button" aria-pressed="true">Grid</button>
+        <button id="listBtn" class="view-btn" type="button" aria-pressed="false">List</button>
       </div>
+    </section>
+
+    <section class="directory" aria-label="Business directory">
+      <div id="members" class="members grid" aria-live="polite"></div>
     </section>
   </main>
 
