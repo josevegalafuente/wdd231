@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarija Chamber of Commerce | Home</title>
+
+  <meta name="description" content="Welcome to the Tarija Chamber of Commerce. Discover local businesses, events, weather updates, and member spotlights.">
+  <meta name="author" content="Jose Vega">
+
+  <meta property="og:title" content="Tarija Chamber of Commerce">
+  <meta property="og:description" content="Connect with Tarija businesses, upcoming events, local weather, and featured members of the Chamber.">
+  <meta property="og:image" content="https://josevegalafuente.github.io/wdd231/chamber/images/og-home.png">
+  <meta property="og:url" content="https://josevegalsVega.../wdd231/chamber/index.html">
+
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/directory.css">
+  <script src="scripts/directory.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand">
+        <img class="brand-logo-img" src="images/logo.png" alt="Tarija Chamber of Commerce logo">
+        <div class="brand-text">
+          <p class="brand-title">Tarija Chamber</p>
+          <p class="brand-subtitle">of Commerce</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <span class="theme-knob" aria-hidden="true"></span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/index.html" aria-current="page">Home</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/directory.html">Directory</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/join.html">Join</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/discover.html">Discover</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container page home-page">
+    <h1 class="page-title">Tarija Chamber of Commerce</h1>
+
+    <section class="hero" aria-label="Welcome hero">
+      <img class="hero-img" src="images/central-market.jpg" alt="A view representing Tarija and local business community" loading="eager">
+      <div class="hero-overlay">
+        <h2 class="hero-title">Connect. Grow. Thrive.</h2>
+        <p class="hero-text">Supporting local businesses and building a stronger Tarija.</p>
+
+        <a class="cta-btn" href="join.html">Join the Chamber</a>
+      </div>
+    </section>
+    <div class="home-grid">
+      <section class="card events" aria-label="Current events">
+        <h2 class="card-title">Current Events</h2>
+
+        <ul class="events-list">
+          <li class="event-item">
+            <h3 class="event-title">Networking Breakfast</h3>
+            <p class="event-meta"><strong>Date:</strong> Feb 10</p>
+            <p class="event-meta"><strong>Location:</strong> Tarija Convention Hall</p>
+          </li>
+
+          <li class="event-item">
+            <h3 class="event-title">Small Business Workshop</h3>
+            <p class="event-meta"><strong>Date:</strong> Feb 18</p>
+            <p class="event-meta"><strong>Location:</strong> Chamber Offices</p>
+          </li>
+
+          <li class="event-item">
+            <h3 class="event-title">Local Expo Spotlight</h3>
+            <p class="event-meta"><strong>Date:</strong> Feb 28</p>
+            <p class="event-meta"><strong>Location:</strong> Central Plaza</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card weather" aria-label="Weather section">
+        <h2 class="card-title">Weather</h2>
+
+        <div class="weather-now" aria-live="polite">
+          <p class="weather-line">
+            <span class="weather-label">Current Temperature:</span>
+            <span id="currentTemp">--</span>
+          </p>
+          <p class="weather-line">
+            <span class="weather-label">Description:</span>
+            <span id="weatherDesc">--</span>
+          </p>
+        </div>
+
+        <h3 class="sub-title">3-Day Forecast</h3>
+        <ul id="forecastList" class="forecast-list" aria-live="polite"></ul>
+
+        <p class="weather-note">
+          Data provided by OpenWeatherMap.
+        </p>
+      </section>
+
+      <section class="card spotlights" aria-label="Member spotlights">
+        <h2 class="card-title">Member Spotlights</h2>
+        <div id="spotlights" class="spotlights-grid" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-left">
+        <p class="footer-title">Tarija Chamber of Commerce</p>
+        <p>Av. Guadalquivir 0282</p>
+        <p>Tarija, Bolivia</p>
+        <p>info@tarijachamber.bo</p>
+        <p>(+591) 65826931</p>
+      </div>
+
+      <nav class="footer-social" aria-label="Social media">
+        <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        <a class="social" href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+        <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </nav>
+
+      <div class="footer-right">
+        <p>WDD231 Class Project</p>
+        <p>Jose Vega</p>
+        <p>© <span id="year"></span> Tarija Chamber of Commerce</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

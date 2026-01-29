@@ -418,3 +418,158 @@ body.dark .theme-knob {
     text-align: right;
   }
 }
+
+
+
+/* ==(index.html)== */
+
+.home-page .hero {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.home-page .hero-img {
+  width: 100%;
+  height: clamp(240px, 35vw, 420px);
+  object-fit: cover;
+  display: block;
+}
+
+.home-page .hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: end;
+  gap: 0.4rem;
+  padding: 1.1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.05));
+  color: #fff;
+}
+
+.home-page .hero-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.home-page .hero-text {
+  margin: 0;
+  max-width: 55ch;
+  opacity: 0.95;
+}
+
+.home-page .cta-btn {
+  width: fit-content;
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(255,255,255,0.92);
+  color: #111;
+}
+
+.home-page .cta-btn:hover {
+  filter: brightness(0.95);
+}
+
+.home-page .home-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+
+
+@media (min-width: 900px) {
+  .home-page .home-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .home-page .spotlights {
+    grid-column: 1 / -1;
+  }
+}
+
+.home-page .card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0.95rem;
+}
+
+.home-page .card-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.home-page .sub-title {
+  margin: 0.8rem 0 0.45rem;
+  font-size: 1.05rem;
+}
+
+.home-page .events-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.home-page .event-title {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+}
+
+.home-page .event-meta {
+  margin: 0.1rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.home-page .weather-line {
+  margin: 0.2rem 0;
+}
+
+.home-page .weather-label {
+  font-weight: 700;
+}
+
+.home-page .forecast-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+}
+
+.home-page .weather-note {
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.home-page .spotlights-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 700px) {
+  .home-page .spotlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .home-page .spotlights-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-page .spotlights .member-card {
+  grid-template-rows: 150px auto;
+}
