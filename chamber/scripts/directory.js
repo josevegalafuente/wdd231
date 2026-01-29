@@ -251,7 +251,7 @@ async function loadWeather() {
       const d = p.entry?.weather?.[0]?.description;
 
       const li = document.createElement("li");
-      li.textContent = `${label}: ${formatTempC(t)} — ${d || "—"}`;
+      li.textContent = `${label}: ${formatTempC(t)} —> ${d || "—"}`;
       forecastListEl.appendChild(li);
     }
   } catch (err) {
