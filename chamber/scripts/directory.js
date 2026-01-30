@@ -152,7 +152,7 @@ if (membersEl && gridBtn && listBtn) {
   loadMembersForDirectory();
 }
 
-// HOME PAGE: WEATHER
+// Home Page Weather
 const currentTempEl = qs("#currentTemp");
 const weatherDescEl = qs("#weatherDesc");
 const forecastListEl = qs("#forecastList");
