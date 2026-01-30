@@ -1,9 +1,9 @@
 // Helpers
 const qs = (sel) => document.querySelector(sel);
 
-// =====================
-// Header: Mobile menu
-// =====================
+
+// Mobile menu
+
 const menuToggle = qs("#menuToggle");
 
 function setMenu(open) {
@@ -25,9 +25,9 @@ if (menuToggle) {
   });
 }
 
-// =====================
-// Header: Theme toggle
-// =====================
+
+// Theme
+
 const themeToggle = qs("#themeToggle");
 
 function applyTheme(theme) {
@@ -49,18 +49,18 @@ if (themeToggle) {
   })();
 }
 
-// =====================
+
 // Footer info
-// =====================
+
 const yearEl = qs("#year");
 const lastModEl = qs("#lastModified");
 
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 if (lastModEl) lastModEl.textContent = document.lastModified;
 
-// =====================
-// DIRECTORY PAGE ONLY
-// =====================
+
+// DIRECTORY PAGE 
+
 const membersEl = qs("#members");
 const gridBtn = qs("#gridBtn");
 const listBtn = qs("#listBtn");
@@ -158,14 +158,14 @@ if (membersEl && gridBtn && listBtn) {
   loadMembersForDirectory();
 }
 
-// =====================
-// HOME PAGE ONLY: WEATHER
-// =====================
+
+// WEATHER
+
 const currentTempEl = qs("#currentTemp");
 const weatherDescEl = qs("#weatherDesc");
 const forecastListEl = qs("#forecastList");
 
-// ✅ OpenWeatherMap API Key:
+// OpenWeatherMap API Key:
 const OPENWEATHER_API_KEY = "ff956eaa9ed342f403a5bc1436bb3515";
 
 const WEATHER_CITY_QUERY = "Tarija,BO";
@@ -213,7 +213,7 @@ async function loadWeather() {
 
   if (!OPENWEATHER_API_KEY) {
     currentTempEl.textContent = "--";
-    weatherDescEl.textContent = "Add your OpenWeatherMap API Key in directory.js";
+    weatherDescEl.textContent = "";
     forecastListEl.innerHTML = "";
     return;
   }
@@ -250,7 +250,7 @@ async function loadWeather() {
       const d = p.entry?.weather?.[0]?.description;
 
       const li = document.createElement("li");
-      li.textContent = `${label}: ${formatTempC(t)} — ${d || "—"}`;
+      li.textContent = `${label}: ${formatTempC(t)} —> ${d || "—"}`;
       forecastListEl.appendChild(li);
     }
   } catch (err) {
@@ -263,9 +263,9 @@ async function loadWeather() {
 
 loadWeather();
 
-// =====================
-// HOME PAGE ONLY: SPOTLIGHTS
-// =====================
+
+// SPOTLIGHTS
+
 const spotlightsEl = qs("#spotlights");
 
 function shuffle(arr) {
@@ -306,9 +306,9 @@ async function loadSpotlights() {
 
 loadSpotlights();
 
-// =====================
-// JOIN PAGE ONLY: TIMESTAMP
-// =====================
+
+// TIMESTAMP
+
 function setJoinTimestamp() {
   const ts = qs("#timestamp");
   if (!ts) return;
@@ -316,9 +316,9 @@ function setJoinTimestamp() {
 }
 setJoinTimestamp();
 
-// =====================
-// JOIN PAGE ONLY: MODALS (HTML dialog)
-// =====================
+
+// JOIN PAGE MODALS 
+
 function initJoinModals() {
   const openers = document.querySelectorAll("[data-modal-open]");
   const closers = document.querySelectorAll("[data-modal-close]");
@@ -357,9 +357,9 @@ function initJoinModals() {
 }
 initJoinModals();
 
-// =====================
-// THANKYOU PAGE ONLY: DISPLAY FORM DATA
-// =====================
+
+// THANKYOU PAGE, DISPLAY FORM DATA
+
 function safeGet(params, key) {
   const v = params.get(key);
   return v && v.trim() ? v : "—";
