@@ -1,7 +1,9 @@
 // Helpers
 const qs = (sel) => document.querySelector(sel);
 
+// =====================
 // Header: Mobile menu
+// =====================
 const menuToggle = qs("#menuToggle");
 
 function setMenu(open) {
@@ -23,8 +25,9 @@ if (menuToggle) {
   });
 }
 
-
+// =====================
 // Header: Theme toggle
+// =====================
 const themeToggle = qs("#themeToggle");
 
 function applyTheme(theme) {
@@ -40,21 +43,24 @@ if (themeToggle) {
     applyTheme(isDark ? "light" : "dark");
   });
 
-// Load saved theme
   (() => {
     const saved = localStorage.getItem("tcc-theme");
     if (saved === "dark" || saved === "light") applyTheme(saved);
   })();
 }
 
-// Footer 
+// =====================
+// Footer info
+// =====================
 const yearEl = qs("#year");
 const lastModEl = qs("#lastModified");
 
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 if (lastModEl) lastModEl.textContent = document.lastModified;
 
-// Directory Page
+// =====================
+// DIRECTORY PAGE ONLY
+// =====================
 const membersEl = qs("#members");
 const gridBtn = qs("#gridBtn");
 const listBtn = qs("#listBtn");
@@ -152,15 +158,16 @@ if (membersEl && gridBtn && listBtn) {
   loadMembersForDirectory();
 }
 
-// Home Page Weather
+// =====================
+// HOME PAGE ONLY: WEATHER
+// =====================
 const currentTempEl = qs("#currentTemp");
 const weatherDescEl = qs("#weatherDesc");
 const forecastListEl = qs("#forecastList");
 
-// OpenWeatherMap API Key
+// ✅ OpenWeatherMap API Key:
 const OPENWEATHER_API_KEY = "ff956eaa9ed342f403a5bc1436bb3515";
 
-// Tarija, Bolivia
 const WEATHER_CITY_QUERY = "Tarija,BO";
 const WEATHER_UNITS = "metric";
 
@@ -173,13 +180,12 @@ function pickThreeDayForecast(list) {
   const byDay = new Map();
 
   for (const item of list) {
-    const dtTxt = item.dt_txt; 
+    const dtTxt = item.dt_txt;
     if (!dtTxt) continue;
 
     const [dateStr, timeStr] = dtTxt.split(" ");
     if (!dateStr || !timeStr) continue;
 
-    // Prefer noon
     if (timeStr.startsWith("12:00:00") && !byDay.has(dateStr)) {
       byDay.set(dateStr, item);
     }
@@ -195,11 +201,10 @@ function pickThreeDayForecast(list) {
     }
   }
 
-  // skip "today" if present
   const days = Array.from(byDay.keys()).sort();
   const todayStr = new Date().toISOString().slice(0, 10);
-
   const nextDays = days.filter((d) => d !== todayStr).slice(0, 3);
+
   return nextDays.map((d) => ({ date: d, entry: byDay.get(d) }));
 }
 
@@ -214,7 +219,6 @@ async function loadWeather() {
   }
 
   try {
-  // Current weather
     const currentUrl =
       `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(WEATHER_CITY_QUERY)}&units=${WEATHER_UNITS}&appid=${OPENWEATHER_API_KEY}`;
 
@@ -228,7 +232,6 @@ async function loadWeather() {
     currentTempEl.textContent = formatTempC(temp);
     weatherDescEl.textContent = desc ? desc : "--";
 
-    // Forecast
     const forecastUrl =
       `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(WEATHER_CITY_QUERY)}&units=${WEATHER_UNITS}&appid=${OPENWEATHER_API_KEY}`;
 
@@ -241,17 +244,13 @@ async function loadWeather() {
     forecastListEl.innerHTML = "";
     for (const p of picks) {
       const dateObj = new Date(`${p.date}T00:00:00`);
-      const label = dateObj.toLocaleDateString(undefined, {
-        weekday: "short",
-        month: "short",
-        day: "numeric"
-      });
+      const label = dateObj.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
 
       const t = p.entry?.main?.temp;
       const d = p.entry?.weather?.[0]?.description;
 
       const li = document.createElement("li");
-      li.textContent = `${label}: ${formatTempC(t)} —> ${d || "—"}`;
+      li.textContent = `${label}: ${formatTempC(t)} — ${d || "—"}`;
       forecastListEl.appendChild(li);
     }
   } catch (err) {
@@ -264,7 +263,9 @@ async function loadWeather() {
 
 loadWeather();
 
-// Home Page Spotlights
+// =====================
+// HOME PAGE ONLY: SPOTLIGHTS
+// =====================
 const spotlightsEl = qs("#spotlights");
 
 function shuffle(arr) {
@@ -304,3 +305,90 @@ async function loadSpotlights() {
 }
 
 loadSpotlights();
+
+// =====================
+// JOIN PAGE ONLY: TIMESTAMP
+// =====================
+function setJoinTimestamp() {
+  const ts = qs("#timestamp");
+  if (!ts) return;
+  ts.value = new Date().toISOString();
+}
+setJoinTimestamp();
+
+// =====================
+// JOIN PAGE ONLY: MODALS (HTML dialog)
+// =====================
+function initJoinModals() {
+  const openers = document.querySelectorAll("[data-modal-open]");
+  const closers = document.querySelectorAll("[data-modal-close]");
+  if (openers.length === 0) return;
+
+  openers.forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = a.getAttribute("data-modal-open");
+      const dlg = document.getElementById(id);
+      if (dlg && typeof dlg.showModal === "function") dlg.showModal();
+    });
+  });
+
+  closers.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dlg = btn.closest("dialog");
+      if (dlg) dlg.close();
+    });
+  });
+
+  // Close when clicking backdrop
+  document.querySelectorAll("dialog.modal").forEach((dlg) => {
+    dlg.addEventListener("click", (e) => {
+      const rect = dlg.getBoundingClientRect();
+      const inside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+
+      // If click is outside inner area, close
+      if (!inside) dlg.close();
+    });
+  });
+}
+initJoinModals();
+
+// =====================
+// THANKYOU PAGE ONLY: DISPLAY FORM DATA
+// =====================
+function safeGet(params, key) {
+  const v = params.get(key);
+  return v && v.trim() ? v : "—";
+}
+
+function fillThankYou() {
+  const firstEl = qs("#tyFirstName");
+  const lastEl = qs("#tyLastName");
+  const emailEl = qs("#tyEmail");
+  const mobileEl = qs("#tyMobile");
+  const bizEl = qs("#tyBusiness");
+  const tsEl = qs("#tyTimestamp");
+
+  if (!firstEl || !lastEl || !emailEl || !mobileEl || !bizEl || !tsEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+
+  firstEl.textContent = safeGet(params, "firstName");
+  lastEl.textContent = safeGet(params, "lastName");
+  emailEl.textContent = safeGet(params, "email");
+  mobileEl.textContent = safeGet(params, "mobile");
+  bizEl.textContent = safeGet(params, "businessName");
+
+  const rawTs = params.get("timestamp");
+  if (rawTs) {
+    const d = new Date(rawTs);
+    tsEl.textContent = Number.isNaN(d.getTime()) ? rawTs : d.toLocaleString();
+  } else {
+    tsEl.textContent = "—";
+  }
+}
+fillThankYou();

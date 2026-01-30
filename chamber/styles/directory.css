@@ -573,3 +573,190 @@ body.dark .theme-knob {
 .home-page .spotlights .member-card {
   grid-template-rows: 150px auto;
 }
+
+
+/* =========================
+   JOIN + THANKYOU (W04)
+   Safe additions (scoped)
+========================= */
+
+.join-page .join-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Mobile: cards below form (default) */
+@media (min-width: 900px) {
+  .join-page .join-grid {
+    grid-template-columns: 1.2fr 0.8fr; /* form left, cards right */
+    align-items: start;
+  }
+}
+
+.join-page .join-card,
+.join-page .levels,
+.thankyou-page .thankyou-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.join-page .join-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.join-page .field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.join-page .field-label {
+  font-weight: 700;
+}
+
+.join-page input,
+.join-page select,
+.join-page textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.join-page textarea {
+  resize: vertical;
+}
+
+.join-page input:focus,
+.join-page select:focus,
+.join-page textarea:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.join-page .submit-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  background: var(--dark);
+  color: var(--dark-text);
+}
+
+.join-page .levels-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.join-page .level-card {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+}
+
+/* Simple entrance animation (requirement) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.join-page .level-card[data-animate] {
+  animation: fadeUp 450ms ease both;
+}
+
+.join-page .level-card[data-animate]:nth-child(2) { animation-delay: 80ms; }
+.join-page .level-card[data-animate]:nth-child(3) { animation-delay: 160ms; }
+.join-page .level-card[data-animate]:nth-child(4) { animation-delay: 240ms; }
+
+.join-page .level-title {
+  margin: 0 0 0.25rem;
+}
+
+.join-page .level-meta {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+}
+
+.join-page .level-link {
+  font-weight: 800;
+  text-decoration: none;
+}
+.join-page .level-link:hover {
+  text-decoration: underline;
+}
+
+/* Modal (dialog) styling */
+.join-page .modal {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0;
+  width: min(560px, calc(100% - 2rem));
+  background: var(--bg);
+  color: var(--text);
+}
+
+.join-page .modal::backdrop {
+  background: rgba(0,0,0,0.55);
+}
+
+.join-page .modal-inner {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.join-page .modal-close {
+  margin-top: 0.8rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  background: var(--dark);
+  color: var(--dark-text);
+}
+
+/* THANK YOU */
+.thankyou-page .thankyou-text {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.thankyou-page .summary {
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.thankyou-page .summary-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.thankyou-page dt {
+  font-weight: 800;
+}
+
+.thankyou-page dd {
+  margin: 0;
+  color: var(--text);
+}
+
+@media (max-width: 420px) {
+  .thankyou-page .summary-row {
+    grid-template-columns: 1fr;
+  }
+}

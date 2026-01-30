@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarija Chamber of Commerce | Join</title>
+
+  <meta name="description" content="Apply to join the Tarija Chamber of Commerce. Submit your membership application and learn about membership benefits.">
+  <meta name="author" content="Jose Vega">
+
+  <meta property="og:title" content="Join the Tarija Chamber of Commerce">
+  <meta property="og:description" content="Apply to become a member of the Tarija Chamber of Commerce and explore membership levels and benefits.">
+  <meta property="og:image" content="https://josevegalafuente.github.io/wdd231/chamber/images/og-join.png">
+  <meta property="og:url" content="https://josevegalafuente.github.io/wdd231/chamber/join.html">
+
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/directory.css">
+  <script src="scripts/directory.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand">
+        <img class="brand-logo-img" src="images/logo.png" alt="Tarija Chamber of Commerce logo">
+        <div class="brand-text">
+          <p class="brand-title">Tarija Chamber</p>
+          <p class="brand-subtitle">of Commerce</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <span class="theme-knob" aria-hidden="true"></span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/index.html">Home</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/directory.html">Directory</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/join.html" aria-current="page">Join</a>
+        <a href="https://josevegalafuente.github.io/wdd231/chamber/discover.html">Discover</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container page join-page">
+    <h1 class="page-title">Join the Chamber</h1>
+
+    <div class="join-grid">
+
+      <section class="join-card" aria-label="Membership application form">
+        <h2 class="card-title">Membership Application</h2>
+
+        <form class="join-form" method="get" action="thankyou.html">
+          <label class="field">
+            <span class="field-label">First Name *</span>
+            <input
+              type="text"
+              name="firstName"
+              required
+              title="Please enter your first name."
+              autocomplete="given-name"
+              placeholder="e.g., Jose"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Last Name *</span>
+            <input
+              type="text"
+              name="lastName"
+              required
+              title="Please enter your last name."
+              autocomplete="family-name"
+              placeholder="e.g., Vega"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Organizational Title *</span>
+            <input
+              type="text"
+              name="orgTitle"
+              required
+              title="Minimum 7 characters. Letters, spaces, and hyphens only."
+              autocomplete="organization-title"
+              pattern="[A-Za-zÀ-ÿ\s-]{7,}"
+              placeholder="e.g., Marketing Lead"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email *</span>
+            <input
+              type="email"
+              name="email"
+              required
+              title="Please enter a valid email address."
+              autocomplete="email"
+              placeholder="name@example.com"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Mobile Phone *</span>
+            <input
+              type="tel"
+              name="mobile"
+              required
+              title="Please enter your mobile phone number."
+              autocomplete="tel"
+              placeholder="+591 7XXXXXXX"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Business/Organization Name *</span>
+            <input
+              type="text"
+              name="businessName"
+              required
+              title="Please enter your business/organization name."
+              autocomplete="organization"
+              placeholder="e.g., Tarija Tech Hub"
+            >
+          </label>
+
+          <label class="field">
+            <span class="field-label">Membership Level *</span>
+            <select name="membershipLevel" required title="Select a membership level.">
+              <option value="" selected disabled>Select one</option>
+              <option value="np">NP Membership</option>
+              <option value="bronze">Bronze Membership</option>
+              <option value="silver">Silver Membership</option>
+              <option value="gold">Gold Membership</option>
+            </select>
+          </label>
+
+          <label class="field field-full">
+            <span class="field-label">Business/Organization Description</span>
+            <textarea
+              name="description"
+              title="Describe your organization."
+              rows="4"
+              placeholder="Tell us about your organization..."
+            ></textarea>
+          </label>
+
+          <input type="hidden" name="timestamp" id="timestamp">
+
+          <button class="submit-btn" type="submit">Submit Application</button>
+        </form>
+      </section>
+
+
+      <aside class="levels" aria-label="Membership levels and benefits">
+        <h2 class="card-title">Membership Levels</h2>
+
+        <div class="levels-grid">
+          <article class="level-card" data-animate>
+            <h3 class="level-title">NP Membership</h3>
+            <p class="level-meta">For non-profits • No fee</p>
+            <a class="level-link" href="#" data-modal-open="modal-np">Learn more</a>
+          </article>
+
+          <article class="level-card" data-animate>
+            <h3 class="level-title">Bronze Membership</h3>
+            <p class="level-meta">Basic support & visibility</p>
+            <a class="level-link" href="#" data-modal-open="modal-bronze">Learn more</a>
+          </article>
+
+          <article class="level-card" data-animate>
+            <h3 class="level-title">Silver Membership</h3>
+            <p class="level-meta">More benefits & promotions</p>
+            <a class="level-link" href="#" data-modal-open="modal-silver">Learn more</a>
+          </article>
+
+          <article class="level-card" data-animate>
+            <h3 class="level-title">Gold Membership</h3>
+            <p class="level-meta">Top placement & maximum perks</p>
+            <a class="level-link" href="#" data-modal-open="modal-gold">Learn more</a>
+          </article>
+        </div>
+      </aside>
+    </div>
+
+    <dialog class="modal" id="modal-np" aria-label="NP Membership details">
+      <div class="modal-inner">
+        <h2>NP Membership</h2>
+        <p>No fee. Designed for non-profit organizations with community impact.</p>
+        <ul>
+          <li>Directory listing</li>
+          <li>Community networking invitations</li>
+          <li>Access to chamber announcements</li>
+        </ul>
+        <button class="modal-close" type="button" data-modal-close>Close</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="modal-bronze" aria-label="Bronze Membership details">
+      <div class="modal-inner">
+        <h2>Bronze Membership</h2>
+        <p>Entry-level membership with essential benefits.</p>
+        <ul>
+          <li>Directory listing</li>
+          <li>Event invitations</li>
+          <li>Basic training resources</li>
+        </ul>
+        <button class="modal-close" type="button" data-modal-close>Close</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="modal-silver" aria-label="Silver Membership details">
+      <div class="modal-inner">
+        <h2>Silver Membership</h2>
+        <p>Increased visibility and promotional opportunities.</p>
+        <ul>
+          <li>All Bronze benefits</li>
+          <li>Enhanced directory placement</li>
+          <li>Special event discounts</li>
+        </ul>
+        <button class="modal-close" type="button" data-modal-close>Close</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="modal-gold" aria-label="Gold Membership details">
+      <div class="modal-inner">
+        <h2>Gold Membership</h2>
+        <p>Premium membership with maximum exposure and perks.</p>
+        <ul>
+          <li>All Silver benefits</li>
+          <li>Priority spotlight opportunities (home page)</li>
+          <li>Featured promotions & training</li>
+        </ul>
+        <button class="modal-close" type="button" data-modal-close>Close</button>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-left">
+        <p class="footer-title">Tarija Chamber of Commerce</p>
+        <p>Av. Guadalquivir 0282</p>
+        <p>Tarija, Bolivia</p>
+        <p>info@tarijachamber.bo</p>
+        <p>(+591) 65826931</p>
+      </div>
+
+      <nav class="footer-social" aria-label="Social media">
+        <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        <a class="social" href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+        <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </nav>
+
+      <div class="footer-right">
+        <p>WDD231 Class Project</p>
+        <p>Jose Vega</p>
+        <p>© <span id="year"></span> Tarija Chamber of Commerce</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
