@@ -767,3 +767,131 @@ body.dark .theme-knob {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+/* =========================
+   DISCOVER (W05)
+   Safe additions (scoped)
+========================= */
+
+.discover-page .visit-message {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin: 0.8rem 0 1rem;
+}
+
+.discover-page .visit-text {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.discover-page .discover-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-areas:
+    "a"
+    "b"
+    "c"
+    "d"
+    "e"
+    "f"
+    "g"
+    "h";
+}
+
+/* Assign grid areas (8 cards) */
+.discover-page .discover-card:nth-child(1) { grid-area: a; }
+.discover-page .discover-card:nth-child(2) { grid-area: b; }
+.discover-page .discover-card:nth-child(3) { grid-area: c; }
+.discover-page .discover-card:nth-child(4) { grid-area: d; }
+.discover-page .discover-card:nth-child(5) { grid-area: e; }
+.discover-page .discover-card:nth-child(6) { grid-area: f; }
+.discover-page .discover-card:nth-child(7) { grid-area: g; }
+.discover-page .discover-card:nth-child(8) { grid-area: h; }
+
+/* Medium screens (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .discover-page .discover-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "a b"
+      "c d"
+      "e f"
+      "g h";
+  }
+}
+
+/* Large screens (1025px and above) */
+@media (min-width: 1025px) {
+  .discover-page .discover-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "a b c d"
+      "e f g h";
+  }
+}
+
+.discover-page .discover-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.discover-page .discover-title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.discover-page .discover-figure {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.discover-page .discover-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.discover-page .discover-address {
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.discover-page .discover-desc {
+  margin: 0;
+  color: var(--muted);
+}
+
+.discover-page .discover-btn {
+  width: fit-content;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: var(--dark);
+  color: var(--dark-text);
+}
+
+/* Requirement: hover effect on images, NOT on mobile view */
+@media (min-width: 641px) {
+  .discover-page .discover-figure:hover .discover-img {
+    transform: scale(1.03);
+    filter: contrast(1.05) saturate(1.15);
+    transition: transform 200ms ease, filter 200ms ease;
+  }
+  .discover-page .discover-img {
+    transition: transform 200ms ease, filter 200ms ease;
+  }
+}

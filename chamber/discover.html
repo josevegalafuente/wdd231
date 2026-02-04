@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarija Chamber of Commerce | Discover</title>
+
+  <meta name="description" content="Discover Tarija: local highlights, attractions, and community features. Explore eight places of interest and learn more about our region.">
+  <meta name="author" content="Jose Vega">
+
+  <meta property="og:title" content="Discover Tarija | Tarija Chamber of Commerce">
+  <meta property="og:description" content="Explore places of interest, facts, and highlights of Tarija with our Discover page.">
+  <meta property="og:image" content="https://josevegalafuente.github.io/wdd231/chamber/images/og-discover.png">
+  <meta property="og:url" content="https://josevegalafuente.github.io/wdd231/chamber/discover.html">
+
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/directory.css">
+  <script src="scripts/directory.js" defer></script>
+  <script type="module" src="scripts/discover.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand">
+        <img class="brand-logo-img" src="images/logo.png" alt="Tarija Chamber of Commerce logo">
+        <div class="brand-text">
+          <p class="brand-title">Tarija Chamber</p>
+          <p class="brand-subtitle">of Commerce</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <span class="theme-knob" aria-hidden="true"></span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+          <span class="menu-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="index.html">Home</a>
+        <a href="directory.html">Directory</a>
+        <a href="join.html">Join</a>
+        <a href="discover.html" aria-current="page">Discover</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container page discover-page">
+    <h1 class="page-title">Discover Tarija</h1>
+
+    <section class="visit-message" aria-label="Visitor information">
+      <p id="visitMessage" class="visit-text">Loading visit message...</p>
+    </section>
+
+    <section class="discover" aria-label="Places of interest in Tarija">
+      <div id="discoverGrid" class="discover-grid" aria-live="polite">
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-left">
+        <p class="footer-title">Tarija Chamber of Commerce</p>
+        <p>Av. Guadalquivir 0282</p>
+        <p>Tarija, Bolivia</p>
+        <p>info@tarijachamber.bo</p>
+        <p>(+591) 65826931</p>
+      </div>
+
+      <nav class="footer-social" aria-label="Social media">
+        <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        <a class="social" href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">𝕏</a>
+        <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </nav>
+
+      <div class="footer-right">
+        <p>WDD231 Class Project</p>
+        <p>Jose Vega</p>
+        <p>© <span id="year"></span> Tarija Chamber of Commerce</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
