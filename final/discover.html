@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiking Tarija | Discover</title>
+
+  <meta name="description" content="Discover Tarija hiking highlights: scenic viewpoints, waterfalls, and must-see outdoor locations." />
+  <meta name="author" content="Jose Vega" />
+
+  <meta property="og:title" content="Discover | Hiking Tarija" />
+  <meta property="og:description" content="Explore outdoor highlights and scenic places around Tarija." />
+  <meta property="og:image" content="images/og-hiking-tarija.png" />
+  <meta property="og:url" content="https://yourusername.github.io/wdd231/final/discover.html" />
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+
+  <!-- Discover uses module import (required pattern) -->
+  <script type="module" src="scripts/discover.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/logo.svg" alt="Hiking Tarija logo" width="44" height="44">
+        <span class="brand-text">
+          <span class="brand-title">Hiking Tarija</span>
+          <span class="brand-subtitle">Safe trails • Scenic views</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button"
+        aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="index.html">Home</a>
+        <a href="discover.html" aria-current="page">Discover</a>
+        <a href="reservations.html">Reservations</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <h1 class="page-title">Discover Tarija</h1>
+
+    <section class="visit-message" aria-label="Visit message">
+      <p id="visitMessage" class="visit-text">Loading message...</p>
+    </section>
+
+    <section aria-label="Places of interest">
+      <div class="discover-grid" id="discoverGrid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">Hiking Tarija</p>
+        <p>Tarija, Bolivia</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#attributions">Attributions</a>
+        <a href="discover.html">Discover</a>
+        <a href="reservations.html">Reservations</a>
+      </div>
+
+      <div class="footer-meta">
+        <p>© <span id="year"></span> Hiking Tarija • Jose Vega</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+        <p class="muted">WDD231 • Web Development • BYU–Idaho</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Small shared header behavior (menu) -->
+  <script>
+    // Minimal menu support on discover (since main.js isn't loaded here)
+    const menuToggle = document.querySelector("#menuToggle");
+    const body = document.body;
+    function setMenu(open) {
+      body.classList.toggle("nav-open", open);
+      menuToggle?.setAttribute("aria-expanded", String(open));
+      menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    menuToggle?.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
+    window.addEventListener("resize", () => { if (window.innerWidth >= 769) setMenu(false); });
+
+    // Footer meta
+    const yearEl = document.querySelector("#year");
+    const lastModEl = document.querySelector("#lastModified");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    if (lastModEl) lastModEl.textContent = document.lastModified;
+  </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiking Tarija | Reservations</title>
+
+  <meta name="description" content="Reserve a hiking trek in Tarija. Submit your details and we will contact you with next steps." />
+  <meta name="author" content="Jose Vega" />
+
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/mobile.css">
+  <link rel="stylesheet" href="styles/desktop.css">
+
+  <script src="scripts/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/logo.svg" alt="Hiking Tarija logo" width="44" height="44">
+        <span class="brand-text">
+          <span class="brand-title">Hiking Tarija</span>
+          <span class="brand-subtitle">Safe trails • Scenic views</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button"
+        aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="reservations.html" aria-current="page">Reservations</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <h1 class="page-title">Reservation Request</h1>
+    <p class="section-lead">
+      Fill out the form below. You will be redirected to a confirmation page showing your submitted information.
+    </p>
+
+    <form class="form" method="get" action="thankyou.html" aria-label="Reservation form">
+      <fieldset class="fieldset">
+        <legend>Your information</legend>
+
+        <label class="field">
+          <span class="label">First Name *</span>
+          <input type="text" name="first" required autocomplete="given-name" />
+        </label>
+
+        <label class="field">
+          <span class="label">Last Name *</span>
+          <input type="text" name="last" required autocomplete="family-name" />
+        </label>
+
+        <label class="field">
+          <span class="label">Email *</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="name@example.com" />
+        </label>
+
+        <label class="field">
+          <span class="label">Mobile Phone *</span>
+          <input type="tel" name="phone" required autocomplete="tel" placeholder="+591 7xxxxxxx" />
+        </label>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Trip details</legend>
+
+        <label class="field">
+          <span class="label">Trail preference</span>
+          <select name="trail">
+            <option value="Any">Any</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="label">Notes</span>
+          <textarea name="notes" rows="4" placeholder="Any important details or questions..."></textarea>
+        </label>
+
+        <!-- Required hidden timestamp -->
+        <input type="hidden" name="timestamp" id="timestamp" value="pending">
+      </fieldset>
+
+      <button class="btn btn-primary" type="submit">Submit Reservation</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">Hiking Tarija</p>
+        <p>Tarija, Bolivia</p>
+      </div>
+
+      <div class="footer-meta">
+        <p>© <span id="year"></span> Hiking Tarija • Jose Vega</p>
+        <p>Last Modified: <span id="lastModified"></span></p>
+        <p class="muted">WDD231 • Web Development • BYU–Idaho</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
