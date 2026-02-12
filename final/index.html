@@ -19,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Two CSS files required -->
   <link rel="stylesheet" href="styles/mobile.css">
   <link rel="stylesheet" href="styles/desktop.css">
 
@@ -49,6 +48,7 @@
       <nav class="primary-nav" id="primaryNav">
         <a href="index.html" aria-current="page">Home</a>
         <a href="discover.html">Discover</a>
+        <a href="trails.html">Trails</a>
         <a href="reservations.html">Reservations</a>
       </nav>
     </div>
@@ -88,7 +88,6 @@
       </div>
     </section>
 
-    <!-- Accessible modal -->
     <dialog class="modal" id="trailModal" aria-label="Trail details">
       <div class="modal-inner">
         <button class="modal-close" id="modalClose" type="button" aria-label="Close dialog">✕</button>
@@ -112,24 +111,42 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
+      <!-- Left -->
+      <div class="footer-contact">
         <p class="footer-title">Hiking Tarija</p>
-        <p>Tarija, Bolivia</p>
+        <p style="margin:.2rem 0;">Tarija, Bolivia</p>
+        <p style="margin:.2rem 0;"><a class="link" href="mailto:info@tarijahiking.bo">info@tarijahiking.bo</a></p>
+        <p style="margin:.2rem 0;"><a class="link" href="tel:+59165826931">+591-6582-6931</a></p>
       </div>
 
-      <div class="footer-links">
-        <a href="#attributions">Attributions</a>
-        <a href="discover.html">Discover</a>
-        <a href="reservations.html">Reservations</a>
+      <!-- Center -->
+      <div class="footer-center" style="display:flex; flex-direction:column; align-items:center;">
+        <div class="footer-links" style="justify-content:center;">
+          <a href="#attributions">Attributions</a>
+          <a href="discover.html">Discover</a>
+          <a href="reservations.html">Reservations</a>
+        </div>
+
+        <!-- Social icons (placeholders for your WEBP images) -->
+        <div class="footer-social" aria-label="Social links"
+          style="display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1.15rem;">
+          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img src="images/linkedin.svg" alt="LinkedIn" width="34" height="34" loading="lazy">
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <img src="images/facebook.svg" alt="Facebook" width="34" height="34" loading="lazy">
+          </a>
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+            <img src="images/instagram.svg" alt="Instagram" width="34" height="34" loading="lazy">
+          </a>
+        </div>
       </div>
 
+      <!-- Right -->
       <div class="footer-meta">
         <p>© <span id="year"></span> Hiking Tarija • Jose Vega</p>
         <p>Last Modified: <span id="lastModified"></span></p>
-        <p>
-          Demo Video:
-          <a href="#" id="videoLink" target="_blank" rel="noopener">Add your Loom/YouTube link</a>
-        </p>
+        <p>Demo Video: <a class="link" href="https://www.loom.com/" target="_blank" rel="noopener">Loom</a></p>
         <p class="muted">WDD231 • Web Development • BYU–Idaho</p>
       </div>
     </div>

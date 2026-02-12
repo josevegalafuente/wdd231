@@ -210,3 +210,16 @@ input, select, textarea{
   gap:.55rem;
 }
 .discover-card img{width:100%; height:200px; object-fit:cover; border-radius:12px}
+
+
+/* Trails page toolbar */
+.trails-toolbar { margin-bottom: 1rem; }
+.trails-toolbar-inner{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  align-items:end;
+  justify-content:space-between;
+}
+.toolbar-group{ display:grid; gap:.35rem; }
+.toolbar-meta{ margin-left:auto; }

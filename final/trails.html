@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hiking Tarija | Reservations</title>
+  <title>Hiking Tarija | Trails</title>
 
-  <meta name="description" content="Reserve a hiking trek in Tarija. Submit your details and we will contact you with next steps." />
+  <meta name="description" content="Browse all hiking trails in Tarija. Filter by difficulty and save your favorite routes." />
   <meta name="author" content="Jose Vega" />
 
   <link rel="icon" href="images/favicon.png" type="image/png" />
@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="styles/desktop.css">
 
   <script src="scripts/main.js" defer></script>
+  <script src="scripts/trails.js" defer></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Hiking Tarija home">
         <img class="brand-logo" src="images/logo.svg" alt="Hiking Tarija logo" width="44" height="44">
         <span class="brand-text">
           <span class="brand-title">Hiking Tarija</span>
@@ -42,65 +43,49 @@
       <nav class="primary-nav" id="primaryNav">
         <a href="index.html">Home</a>
         <a href="discover.html">Discover</a>
-        <a href="reservations.html" aria-current="page">Reservations</a>
+        <a href="trails.html" aria-current="page">Trails</a>
+        <a href="reservations.html">Reservations</a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="container section">
-    <h1 class="page-title">Reservation Request</h1>
+    <h1 class="page-title">All Trails</h1>
     <p class="section-lead">
-      Fill out the form below. You will be redirected to a confirmation page showing your submitted information.
+      Browse every route in our trail database. Filter by difficulty and save your favorites.
     </p>
 
-    <form class="form" method="get" action="thankyou.html" aria-label="Reservation form">
-      <fieldset class="fieldset">
-        <legend>Your information</legend>
-
-        <label class="field">
-          <span class="label">First Name *</span>
-          <input type="text" name="first" required autocomplete="given-name" />
-        </label>
-
-        <label class="field">
-          <span class="label">Last Name *</span>
-          <input type="text" name="last" required autocomplete="family-name" />
-        </label>
-
-        <label class="field">
-          <span class="label">Email *</span>
-          <input type="email" name="email" required autocomplete="email" placeholder="name@example.com" />
-        </label>
-
-        <label class="field">
-          <span class="label">Mobile Phone *</span>
-          <input type="tel" name="phone" required autocomplete="tel" placeholder="+591 7xxxxxxx" />
-        </label>
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Trip details</legend>
-
-        <label class="field">
-          <span class="label">Trail preference</span>
-          <select name="trail">
-            <option value="Any">Any</option>
+    <!-- Filter bar -->
+    <section class="panel trails-toolbar" aria-label="Trail filters">
+      <div class="trails-toolbar-inner">
+        <div class="toolbar-group">
+          <label class="label" for="difficultyFilter">Difficulty</label>
+          <select id="difficultyFilter" name="difficulty">
+            <option value="all">All</option>
             <option value="Beginner">Beginner</option>
             <option value="Moderate">Moderate</option>
             <option value="Advanced">Advanced</option>
           </select>
-        </label>
+        </div>
 
-        <label class="field">
-          <span class="label">Notes</span>
-          <textarea name="notes" rows="4" placeholder="Any important details or questions..."></textarea>
-        </label>
+        <div class="toolbar-group toolbar-meta" aria-live="polite">
+          <span class="meta" id="resultsCount">Loading trails...</span>
+        </div>
+      </div>
+    </section>
 
-        <input type="hidden" name="timestamp" id="timestamp" value="pending">
-      </fieldset>
+    <!-- All trails -->
+    <section aria-label="All trail cards">
+      <div class="cards" id="allTrails" aria-live="polite"></div>
+    </section>
 
-      <button class="btn btn-primary" type="submit">Submit Reservation</button>
-    </form>
+    <!-- Modal (same ids used by main.js) -->
+    <dialog class="modal" id="trailModal" aria-label="Trail details">
+      <div class="modal-inner">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close dialog">✕</button>
+        <div id="modalContent"></div>
+      </div>
+    </dialog>
   </main>
 
   <footer class="site-footer">

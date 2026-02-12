@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="styles/mobile.css">
   <link rel="stylesheet" href="styles/desktop.css">
 
-  <!-- Discover uses module import (required pattern) -->
   <script type="module" src="scripts/discover.js"></script>
 </head>
 
@@ -48,6 +47,7 @@
       <nav class="primary-nav" id="primaryNav">
         <a href="index.html">Home</a>
         <a href="discover.html" aria-current="page">Discover</a>
+        <a href="trails.html">Trails</a>
         <a href="reservations.html">Reservations</a>
       </nav>
     </div>
@@ -67,26 +67,46 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
+      <!-- Left -->
+      <div class="footer-contact">
         <p class="footer-title">Hiking Tarija</p>
-        <p>Tarija, Bolivia</p>
+        <p style="margin:.2rem 0;">Tarija, Bolivia</p>
+        <p style="margin:.2rem 0;"><a class="link" href="mailto:info@tarijahiking.bo">info@tarijahiking.bo</a></p>
+        <p style="margin:.2rem 0;"><a class="link" href="tel:+59165826931">+591-6582-6931</a></p>
       </div>
 
-      <div class="footer-links">
-        <a href="index.html#attributions">Attributions</a>
-        <a href="discover.html">Discover</a>
-        <a href="reservations.html">Reservations</a>
+      <!-- Center -->
+      <div class="footer-center" style="display:flex; flex-direction:column; align-items:center;">
+        <div class="footer-links" style="justify-content:center;">
+          <a href="index.html#attributions">Attributions</a>
+          <a href="discover.html">Discover</a>
+          <a href="reservations.html">Reservations</a>
+        </div>
+
+        <div class="footer-social" aria-label="Social links"
+          style="display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1.15rem;">
+          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img src="images/linkedin.svg" alt="LinkedIn" width="34" height="34" loading="lazy">
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <img src="images/facebook.svg" alt="Facebook" width="34" height="34" loading="lazy">
+          </a>
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+            <img src="images/instagram.svg" alt="Instagram" width="34" height="34" loading="lazy">
+          </a>
+        </div>
       </div>
 
+      <!-- Right -->
       <div class="footer-meta">
         <p>© <span id="year"></span> Hiking Tarija • Jose Vega</p>
         <p>Last Modified: <span id="lastModified"></span></p>
+        <p>Demo Video: <a class="link" href="https://www.loom.com/" target="_blank" rel="noopener">Loom</a></p>
         <p class="muted">WDD231 • Web Development • BYU–Idaho</p>
       </div>
     </div>
   </footer>
 
-  <!-- Small shared header behavior (menu) -->
   <script>
     // Minimal menu support on discover (since main.js isn't loaded here)
     const menuToggle = document.querySelector("#menuToggle");
