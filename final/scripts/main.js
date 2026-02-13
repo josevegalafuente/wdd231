@@ -54,11 +54,14 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
 })();
 
 // =====================
-// THANKYOU page: read query params + render
+// THANKYOU page: read query params + render (now includes Interests)
 // =====================
 (function renderThankYou() {
   const dl = qs("#thanksData");
   if (!dl) return;
+
+  const interestsBlock = qs("#interestsBlock");
+  const interestsList = qs("#interestsList");
 
   const params = new URLSearchParams(window.location.search);
 
@@ -76,7 +79,53 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
     .filter(([, v]) => v.trim() !== "")
     .map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`)
     .join("");
+
+  // Interests (from savedRoutes param)
+  const savedParam = params.get("savedRoutes") || "";
+  const ids = savedParam
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  // Hide if there are no selected saved routes
+  if (!ids.length || !interestsBlock || !interestsList) {
+    if (interestsBlock) interestsBlock.style.display = "none";
+    return;
+  }
+
+  // Render loading state immediately
+  interestsList.innerHTML = `<li class="meta">Loading interests...</li>`;
+
+  // Fetch trails and map IDs to names
+  (async () => {
+    try {
+      const res = await fetch("data/trails.json");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const trails = await res.json();
+
+      const names = ids
+        .map((id) => trails.find((t) => t.id === id))
+        .filter(Boolean)
+        .map((t) => t.name);
+
+      if (!names.length) {
+        interestsBlock.style.display = "none";
+        return;
+      }
+
+      interestsList.innerHTML = names
+        .map((name) => `<li>${escapeHtml(name)}</li>`)
+        .join("");
+    } catch (err) {
+      console.error(err);
+      interestsList.innerHTML = `<li class="meta">Sorry, we couldn't load your interests.</li>`;
+    }
+  })();
 })();
+
+
+
+
 
 function escapeHtml(str) {
   return String(str)
@@ -239,3 +288,84 @@ loadFeaturedTrails();
 // OPTIONAL: rotate featured trails automatically every 20 seconds
 // Uncomment if you want it to change without refresh.
 // setInterval(loadFeaturedTrails, 20000);
+
+
+
+// =====================
+// Reservations page: show saved routes (from localStorage favorites)
+// =====================
+(async function renderSavedRoutesOnReservations() {
+  const box = document.querySelector("#savedRoutesBox");
+  const optionsEl = document.querySelector("#savedRoutesOptions");
+  const hiddenEl = document.querySelector("#savedRoutes");
+
+  // Only run on reservations.html (these elements exist only there)
+  if (!box || !optionsEl || !hiddenEl) return;
+
+  const favIds = getFavorites(); // uses FAV_KEY already defined above
+
+  // If no favorites, show a friendly message + link
+  if (!favIds.length) {
+    optionsEl.innerHTML = `
+      <p class="meta" style="margin:.2rem 0;">
+        You don't have any saved routes yet.
+        <a class="link" href="trails.html">Browse trails</a> and click “☆ Save”.
+      </p>
+    `;
+    hiddenEl.value = "";
+    return;
+  }
+
+  try {
+    const res = await fetch("data/trails.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const trails = await res.json();
+
+    const savedTrails = trails.filter((t) => favIds.includes(t.id));
+
+    if (!savedTrails.length) {
+      optionsEl.innerHTML = `
+        <p class="meta" style="margin:.2rem 0;">
+          Your saved list is empty or unavailable right now.
+          <a class="link" href="trails.html">Browse trails</a>.
+        </p>
+      `;
+      hiddenEl.value = "";
+      return;
+    }
+
+    // Build checkbox list
+    optionsEl.innerHTML = savedTrails
+      .map((t) => {
+        const safeTag = t.safe_route ? `<span class="tag tag-safe" style="margin-left:.35rem;">Safe Route</span>` : "";
+        return `
+          <label class="field" style="margin:.35rem 0;">
+            <span style="display:flex; gap:.5rem; align-items:center;">
+              <input type="checkbox" class="saved-route" value="${escapeHtml(t.id)}" checked>
+              <span>
+                <strong>${escapeHtml(t.name)}</strong>
+                <span class="meta" style="display:block; margin:.1rem 0 0;">
+                  ${escapeHtml(t.difficulty)} • ${t.distance_km} km • ${escapeHtml(t.time_est)}
+                </span>
+              </span>
+              ${safeTag}
+            </span>
+          </label>
+        `;
+      })
+      .join("");
+
+    function syncHidden() {
+      const checked = Array.from(document.querySelectorAll(".saved-route:checked")).map((el) => el.value);
+      hiddenEl.value = checked.join(",");
+    }
+
+    // Initial value + update on change
+    syncHidden();
+    optionsEl.addEventListener("change", syncHidden);
+  } catch (err) {
+    console.error(err);
+    optionsEl.innerHTML = `<p class="meta">Sorry, we couldn't load your saved routes right now.</p>`;
+    hiddenEl.value = "";
+  }
+})();
