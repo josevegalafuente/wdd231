@@ -178,6 +178,10 @@ input, select, textarea{
 .footer-meta p{margin:.2rem 0}
 .muted{opacity:.85}
 
+.footer-contact p {
+  margin: .2rem 0;
+}
+
 /* Modal */
 .modal{border:0; border-radius:16px; padding:0; width:min(720px, calc(100% - 2rem))}
 .modal::backdrop{background:rgba(0,0,0,.55)}
