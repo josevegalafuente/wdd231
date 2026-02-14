@@ -24,7 +24,9 @@
   <link rel="stylesheet" href="styles/mobile.css">
   <link rel="stylesheet" href="styles/desktop.css">
 
+  <script src="scripts/main.js" defer></script>
   <script type="module" src="scripts/discover.js"></script>
+
 </head>
 
 <body>
@@ -69,7 +71,7 @@
 
   <footer class="site-footer">
     <div class="layout-container footer-inner">
-      <!-- Left -->
+
       <div class="footer-contact">
         <p class="footer-title">Hiking Tarija</p>
         <p>Tarija, Bolivia</p>
@@ -77,7 +79,6 @@
         <p>(+591) 65826931</p>
       </div>
 
-      <!-- Center -->
       <div class="footer-center">
         <div class="footer-links">
           <a href="index.html#attributions">Home</a>
@@ -99,7 +100,6 @@
         </nav>
       </div>
 
-      <!-- Right -->
       <div class="footer-meta">
         <p>© <span id="year"></span> Hiking Tarija • Jose Vega</p>
         <p>Last Modified: <span id="lastModified"></span></p>
@@ -108,24 +108,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    // Minimal menu support on discover (since main.js isn't loaded here)
-    const menuToggle = document.querySelector("#menuToggle");
-    const body = document.body;
-    function setMenu(open) {
-      body.classList.toggle("nav-open", open);
-      menuToggle?.setAttribute("aria-expanded", String(open));
-      menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    }
-    menuToggle?.addEventListener("click", () => setMenu(!body.classList.contains("nav-open")));
-    window.addEventListener("resize", () => { if (window.innerWidth >= 769) setMenu(false); });
-
-    // Footer meta
-    const yearEl = document.querySelector("#year");
-    const lastModEl = document.querySelector("#lastModified");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-    if (lastModEl) lastModEl.textContent = document.lastModified;
-  </script>
 </body>
 </html>
