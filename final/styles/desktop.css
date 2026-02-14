@@ -1,13 +1,7 @@
-/* Desktop overrides / layout */
-.layout-container{
-  width:min(1100px, calc(100% - 2.5rem));
-}
-
-.header-inner{
-  grid-template-columns: 1fr auto;
-}
+/* Desktop overrides ONLY (avoid repeated top-level selectors) */
 
 @media (min-width: 769px){
+
   .menu-toggle{display:none;}
 
   .primary-nav{
@@ -31,13 +25,11 @@
   .hero-img{height:560px;}
   .hero-overlay h1{font-size:2.6rem;}
 
-  /* Renombrado: cards -> card-grid */
   .card-grid{
     grid-template-columns: repeat(3, 1fr);
     gap:1rem;
   }
 
-  /* Renombrado: grid-2 -> two-col */
   .two-col{
     grid-template-columns: 1fr 1fr;
     gap:1rem;
@@ -50,12 +42,10 @@
 
   .footer-meta{text-align:right;}
 
-  /* Discover grid */
   .discover-grid{
     grid-template-columns: repeat(4, 1fr);
   }
 
-  /* Hover effect (not on mobile) */
   .discover-card img{
     transition: transform 200ms ease, filter 200ms ease;
   }
