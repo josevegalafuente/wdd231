@@ -1,6 +1,7 @@
 // trails.js
 // Renders ALL trails from data/trails.json and filters by difficulty.
-// Depends on functions already defined in main.js: trailCardHtml, toggleFav, isFav, openModal
+// Depends on functions already defined in main.js:
+// trailCardHtml, toggleFav, isFav, openModal
 
 const gridEl = document.querySelector("#allTrails");
 const filterEl = document.querySelector("#difficultyFilter");
@@ -41,18 +42,25 @@ function wireCardButtons(trailsInMemory) {
 function render(list, label = "all") {
   if (!gridEl) return;
 
+  // Safety: make sure trailCardHtml exists (from main.js)
+  if (typeof trailCardHtml !== "function") {
+    gridEl.innerHTML = `<p class="meta">Error: trailCardHtml() not found. Check that main.js loads before trails.js.</p>`;
+    return;
+  }
+
   gridEl.innerHTML = list.map(trailCardHtml).join("");
   wireCardButtons(allTrails);
-
   setCount(list.length, allTrails.length, label);
 }
 
 function applyFilter() {
   const value = filterEl ? filterEl.value : "all";
+
   if (value === "all") {
     render(allTrails, "all");
     return;
   }
+
   const filtered = allTrails.filter((t) => t.difficulty === value);
   render(filtered, value);
 }
@@ -66,7 +74,6 @@ async function init() {
     allTrails = await res.json();
 
     render(allTrails, "all");
-
     filterEl?.addEventListener("change", applyFilter);
   } catch (err) {
     console.error(err);

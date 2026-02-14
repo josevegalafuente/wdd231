@@ -13,6 +13,15 @@ function shuffle(arr) {
   return a;
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 // =====================
 // Header: Mobile menu
 // =====================
@@ -54,7 +63,7 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
 })();
 
 // =====================
-// THANKYOU page: read query params + render (now includes Interests)
+// THANKYOU page: read query params + render (includes Interests)
 // =====================
 (function renderThankYou() {
   const dl = qs("#thanksData");
@@ -77,26 +86,22 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
 
   dl.innerHTML = fields
     .filter(([, v]) => v.trim() !== "")
-    .map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`)
+    .map(([k, v]) => `<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`)
     .join("");
 
-  // Interests (from savedRoutes param)
   const savedParam = params.get("savedRoutes") || "";
   const ids = savedParam
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
 
-  // Hide if there are no selected saved routes
   if (!ids.length || !interestsBlock || !interestsList) {
     if (interestsBlock) interestsBlock.style.display = "none";
     return;
   }
 
-  // Render loading state immediately
   interestsList.innerHTML = `<li class="meta">Loading interests...</li>`;
 
-  // Fetch trails and map IDs to names
   (async () => {
     try {
       const res = await fetch("data/trails.json");
@@ -123,25 +128,12 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
   })();
 })();
 
-
-
-
-
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 // =====================
 // DATA + Dynamic content (index.html)
 // =====================
 const featuredEl = qs("#featuredTrails");
 
-// Modal (dialog)
+// Dialog (modal)
 const modal = qs("#trailModal");
 const modalContent = qs("#modalContent");
 const modalClose = qs("#modalClose");
@@ -174,14 +166,18 @@ function toggleFav(id) {
 function openModal(trail) {
   if (!modal || !modalContent) return;
 
+  // No inline styles, only semantic markup + existing classes
   modalContent.innerHTML = `
-    <div style="padding: 0 1rem 1rem;">
-      <h2 style="margin:.25rem 0 0.25rem;">${escapeHtml(trail.name)}</h2>
+    <div class="modal-content">
+      <h2 class="modal-title">${escapeHtml(trail.name)}</h2>
+
       <p class="meta"><strong>Difficulty:</strong> ${escapeHtml(trail.difficulty)}</p>
       <p class="meta"><strong>Distance:</strong> ${trail.distance_km} km • <strong>Time:</strong> ${escapeHtml(trail.time_est)}</p>
       <p class="meta"><strong>Best season:</strong> ${escapeHtml(trail.best_season)}</p>
-      <p style="margin:.6rem 0 0;">${escapeHtml(trail.description)}</p>
-      <p class="tag tag-safe" style="margin-top:.75rem;">Safety tip: ${escapeHtml(trail.safety_tip)}</p>
+
+      <p class="modal-desc">${escapeHtml(trail.description)}</p>
+
+      <p class="badge badge-safe">Safety tip: ${escapeHtml(trail.safety_tip)}</p>
     </div>
   `;
 
@@ -206,17 +202,19 @@ function trailCardHtml(t) {
   const saved = isFav(t.id);
 
   return `
-    <article class="card">
+    <article class="content-card">
       <img src="images/trails/${encodeURI(t.image)}" alt="${escapeHtml(t.name)}" loading="lazy" width="600" height="400">
-      <div class="card-body">
-        <h3 class="card-title">${escapeHtml(t.name)}</h3>
+      <div class="content-card-body">
+        <h3 class="content-card-title">${escapeHtml(t.name)}</h3>
+
         <p class="meta"><strong>Difficulty:</strong> ${escapeHtml(t.difficulty)}</p>
         <p class="meta"><strong>Distance:</strong> ${t.distance_km} km • <strong>Time:</strong> ${escapeHtml(t.time_est)}</p>
-        ${t.safe_route ? `<span class="tag tag-safe">Safe Route</span>` : ``}
 
-        <div style="margin-top:.8rem; display:flex; gap:.5rem; flex-wrap:wrap;">
-          <button class="btn btn-primary" type="button" data-view="${escapeHtml(t.id)}">View details</button>
-          <button class="btn" type="button" data-fav="${escapeHtml(t.id)}">${saved ? "★ Saved" : "☆ Save"}</button>
+        ${t.safe_route ? `<span class="badge badge-safe">Safe Route</span>` : ``}
+
+        <div class="card-actions">
+          <button class="action action-primary" type="button" data-view="${escapeHtml(t.id)}">View details</button>
+          <button class="action" type="button" data-fav="${escapeHtml(t.id)}">${saved ? "★ Saved" : "☆ Save"}</button>
         </div>
       </div>
     </article>
@@ -224,9 +222,6 @@ function trailCardHtml(t) {
 }
 
 function pickFeatured(trails, total = 6) {
-  // Goal: show only 6, but change on refresh.
-  // Prefer safe routes (up to 4), then fill remaining randomly.
-
   const safe = trails.filter((t) => t.safe_route);
   const other = trails.filter((t) => !t.safe_route);
 
@@ -237,8 +232,6 @@ function pickFeatured(trails, total = 6) {
   const picks = safeShuffled.slice(0, pickSafeCount);
 
   const remaining = total - picks.length;
-
-  // Fill remaining from remaining safe + others (random)
   const fillPool = shuffle([...safeShuffled.slice(pickSafeCount), ...otherShuffled]);
   picks.push(...fillPool.slice(0, remaining));
 
@@ -253,8 +246,6 @@ async function loadFeaturedTrails() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const trails = await res.json();
-
-    // Pick 6 randomized featured trails
     const featured = pickFeatured(trails, 6);
 
     featuredEl.innerHTML = featured.map(trailCardHtml).join("");
@@ -282,14 +273,8 @@ async function loadFeaturedTrails() {
   }
 }
 
-// Init (index.html only, because #featuredTrails exists only there)
+// Init (index.html only)
 loadFeaturedTrails();
-
-// OPTIONAL: rotate featured trails automatically every 20 seconds
-// Uncomment if you want it to change without refresh.
-// setInterval(loadFeaturedTrails, 20000);
-
-
 
 // =====================
 // Reservations page: show saved routes (from localStorage favorites)
@@ -299,15 +284,14 @@ loadFeaturedTrails();
   const optionsEl = document.querySelector("#savedRoutesOptions");
   const hiddenEl = document.querySelector("#savedRoutes");
 
-  // Only run on reservations.html (these elements exist only there)
   if (!box || !optionsEl || !hiddenEl) return;
 
-  const favIds = getFavorites(); // uses FAV_KEY already defined above
+  const favIds = getFavorites();
 
-  // If no favorites, show a friendly message + link
+  // If no favorites
   if (!favIds.length) {
     optionsEl.innerHTML = `
-      <p class="meta" style="margin:.2rem 0;">
+      <p class="meta">
         You don't have any saved routes yet.
         <a class="link" href="trails.html">Browse trails</a> and click “☆ Save”.
       </p>
@@ -325,7 +309,7 @@ loadFeaturedTrails();
 
     if (!savedTrails.length) {
       optionsEl.innerHTML = `
-        <p class="meta" style="margin:.2rem 0;">
+        <p class="meta">
           Your saved list is empty or unavailable right now.
           <a class="link" href="trails.html">Browse trails</a>.
         </p>
@@ -334,21 +318,21 @@ loadFeaturedTrails();
       return;
     }
 
-    // Build checkbox list
+    // Checkbox list (no inline styles)
     optionsEl.innerHTML = savedTrails
       .map((t) => {
-        const safeTag = t.safe_route ? `<span class="tag tag-safe" style="margin-left:.35rem;">Safe Route</span>` : "";
+        const safeBadge = t.safe_route ? `<span class="badge badge-safe">Safe Route</span>` : "";
         return `
-          <label class="field" style="margin:.35rem 0;">
-            <span style="display:flex; gap:.5rem; align-items:center;">
+          <label class="field saved-route-item">
+            <span class="saved-route-row">
               <input type="checkbox" class="saved-route" value="${escapeHtml(t.id)}" checked>
-              <span>
+              <span class="saved-route-text">
                 <strong>${escapeHtml(t.name)}</strong>
-                <span class="meta" style="display:block; margin:.1rem 0 0;">
+                <span class="meta saved-route-meta">
                   ${escapeHtml(t.difficulty)} • ${t.distance_km} km • ${escapeHtml(t.time_est)}
                 </span>
               </span>
-              ${safeTag}
+              ${safeBadge}
             </span>
           </label>
         `;
@@ -360,7 +344,6 @@ loadFeaturedTrails();
       hiddenEl.value = checked.join(",");
     }
 
-    // Initial value + update on change
     syncHidden();
     optionsEl.addEventListener("change", syncHidden);
   } catch (err) {

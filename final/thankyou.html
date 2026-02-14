@@ -31,7 +31,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="container header-inner">
+    <div class="layout-container header-inner">
       <a class="brand" href="index.html">
         <img class="brand-logo" src="images/logo.webp" alt="Hiking Tarija logo" width="44" height="44">
         <span class="brand-text">
@@ -55,29 +55,29 @@
     </div>
   </header>
 
-  <main id="main" class="container section">
+  <main id="main" class="layout-container section">
     <h1 class="page-title">Thank You!</h1>
     <p class="section-lead">
       We appreciate your interest. Below is the information you submitted:
     </p>
 
-    <section class="panel" aria-label="Submitted form info">
+    <section class="surface-box" aria-label="Submitted form info">
       <dl class="dl" id="thanksData"></dl>
 
-      <!-- NEW: Interests -->
-      <div id="interestsBlock" style="margin-top:1rem;">
-        <h2 class="section-title" style="margin:0 0 .35rem;">Interests</h2>
-        <ul class="list" id="interestsList" style="margin:.25rem 0 0; padding-left:1.2rem;"></ul>
+      <!-- Interests -->
+      <div id="interestsBlock" class="interests-block">
+        <h2 class="section-title interests-title">Interests</h2>
+        <ul class="list interests-list" id="interestsList"></ul>
       </div>
 
-      <p style="margin-top:1rem;">
+      <p class="thanks-actions">
         <a href="index.html" class="link">Back to Home</a>
       </p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="layout-container footer-inner">
       <!-- Left -->
       <div class="footer-contact">
         <p class="footer-title">Hiking Tarija</p>
@@ -87,16 +87,15 @@
       </div>
 
       <!-- Center -->
-      <div class="footer-center" style="display:flex; flex-direction:column; align-items:center;">
-        <div class="footer-links" style="justify-content:center;">
+      <div class="footer-center">
+        <div class="footer-links">
           <a href="index.html#attributions">Home</a>
           <a href="discover.html">Discover</a>
           <a href="trails.html">Trails</a>
           <a href="reservations.html">Reservations</a>
         </div>
 
-        <div class="footer-social" aria-label="Social links"
-          style="display:flex; justify-content:center; align-items:center; gap:1rem; margin-top:1.15rem;">
+        <nav class="footer-social" aria-label="Social links">
           <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
             <img src="images/linkedin.svg" alt="LinkedIn" width="34" height="34" loading="lazy">
           </a>
@@ -106,7 +105,7 @@
           <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
             <img src="images/instagram.svg" alt="Instagram" width="34" height="34" loading="lazy">
           </a>
-        </div>
+        </nav>
       </div>
 
       <!-- Right -->

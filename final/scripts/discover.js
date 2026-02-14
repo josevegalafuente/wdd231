@@ -9,6 +9,8 @@ function setVisitMessage() {
   const now = Date.now();
   const last = Number(localStorage.getItem(key));
 
+  if (!messageEl) return;
+
   if (!last) {
     messageEl.textContent = "Welcome! Let us know if you have any questions.";
     localStorage.setItem(key, String(now));
@@ -28,14 +30,33 @@ function setVisitMessage() {
   localStorage.setItem(key, String(now));
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function cardTemplate(p) {
+  const title = escapeHtml(p.title);
+  const address = escapeHtml(p.address);
+  const description = escapeHtml(p.description);
+
   return `
     <article class="discover-card">
-      <h2 style="margin:0; color:#1F4D3A;">${p.title}</h2>
-      <img src="${p.image}" alt="${p.title}" loading="lazy" width="300" height="200">
-      <address style="font-style:normal; opacity:.85;">${p.address}</address>
-      <p style="margin:0; opacity:.85;">${p.description}</p>
-      <a class="btn btn-primary" href="${p.moreLink}" target="_blank" rel="noopener">Learn more</a>
+      <h2 class="discover-title">${title}</h2>
+
+      <img src="${p.image}" alt="${title}" loading="lazy" width="300" height="200">
+
+      <address class="discover-address">${address}</address>
+
+      <p class="discover-desc">${description}</p>
+
+      <a class="action action-primary" href="${p.moreLink}" target="_blank" rel="noopener">
+        Learn more
+      </a>
     </article>
   `;
 }
