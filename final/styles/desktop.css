@@ -1,5 +1,3 @@
-/* Desktop overrides ONLY (avoid repeated top-level selectors) */
-
 @media (min-width: 769px){
 
   .menu-toggle{display:none;}

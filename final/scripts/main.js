@@ -1,6 +1,4 @@
-// =====================
 // Shared utilities
-// =====================
 const qs = (sel) => document.querySelector(sel);
 
 // Fisher–Yates shuffle (randomize array order)
@@ -22,9 +20,7 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-// =====================
 // Header: Mobile menu
-// =====================
 const menuToggle = qs("#menuToggle");
 
 function setMenu(open) {
@@ -44,27 +40,22 @@ window.addEventListener("resize", () => {
   if (window.innerWidth >= 769) setMenu(false);
 });
 
-// =====================
-// Footer info
-// =====================
+// Footer
 const yearEl = qs("#year");
 const lastModEl = qs("#lastModified");
 
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 if (lastModEl) lastModEl.textContent = document.lastModified;
 
-// =====================
-// FORM timestamp (reservations.html)
-// =====================
+
+// FORM timestamp
 (function setTimestamp() {
   const ts = qs("#timestamp");
   if (!ts) return;
   ts.value = new Date().toISOString();
 })();
 
-// =====================
-// THANKYOU page: read query params + render (includes Interests)
-// =====================
+// THANKYOU page
 (function renderThankYou() {
   const dl = qs("#thanksData");
   if (!dl) return;
@@ -128,9 +119,8 @@ if (lastModEl) lastModEl.textContent = document.lastModified;
   })();
 })();
 
-// =====================
-// DATA + Dynamic content (index.html)
-// =====================
+
+// DATA + Dynamic content index.html
 const featuredEl = qs("#featuredTrails");
 
 // Dialog (modal)
@@ -276,9 +266,9 @@ async function loadFeaturedTrails() {
 // Init (index.html only)
 loadFeaturedTrails();
 
-// =====================
-// Reservations page: show saved routes (from localStorage favorites)
-// =====================
+
+// Reservations page
+
 (async function renderSavedRoutesOnReservations() {
   const box = document.querySelector("#savedRoutesBox");
   const optionsEl = document.querySelector("#savedRoutesOptions");
@@ -318,7 +308,7 @@ loadFeaturedTrails();
       return;
     }
 
-    // Checkbox list (no inline styles)
+    // Checkbox list 
     optionsEl.innerHTML = savedTrails
       .map((t) => {
         const safeBadge = t.safe_route ? `<span class="badge badge-safe">Safe Route</span>` : "";

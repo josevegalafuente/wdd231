@@ -1,8 +1,3 @@
-// trails.js
-// Renders ALL trails from data/trails.json and filters by difficulty.
-// Depends on functions already defined in main.js:
-// trailCardHtml, toggleFav, isFav, openModal
-
 const gridEl = document.querySelector("#allTrails");
 const filterEl = document.querySelector("#difficultyFilter");
 const countEl = document.querySelector("#resultsCount");
@@ -42,7 +37,7 @@ function wireCardButtons(trailsInMemory) {
 function render(list, label = "all") {
   if (!gridEl) return;
 
-  // Safety: make sure trailCardHtml exists (from main.js)
+  // Safety
   if (typeof trailCardHtml !== "function") {
     gridEl.innerHTML = `<p class="meta">Error: trailCardHtml() not found. Check that main.js loads before trails.js.</p>`;
     return;
